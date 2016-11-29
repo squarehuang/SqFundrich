@@ -574,7 +574,7 @@
 </code></pre></div><div class="tab-pane" id="articles__articleId__post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
  "message": "Can&#39;t connect to Elasticsearch"
 }
-</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles__articleId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/articles</span>/{articleId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>刪除一筆研報、議題</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles__articleId__delete_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles__articleId__delete_request"><h3>URI Parameters</h3><ul><li><strong>articleId</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>type</strong>: <em>required (string)</em><p>議題 theme, 研報 report</p><p><strong>Example</strong>:</p><pre>report</pre></li></ul></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="popularword" class="panel-title">/popularword</h3></div><div class="panel-body"><div class="top-resource-description"><p>官網自動提示字的靜態檔 與 CMS 的熱門搜尋字</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_popularword"><span class="parent"></span>/popularword</a> <span class="methods"><a href="#popularword_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_popularword" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#popularword_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>官網自動提示字的靜態檔 與 CMS 的熱門搜尋字</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="popularword_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/popularword</h4></div><div class="modal-body"><div class="alert alert-info"><p>官網自動提示字的靜態檔 與 CMS 的熱門搜尋字</p></div><ul class="nav nav-tabs"><li class="active"><a href="#popularword_get_request" data-toggle="tab">Request</a></li><li><a href="#popularword_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="popularword_get_request"><h3>Query Parameters</h3><ul><li><strong>startdate</strong>: <em>required (string - default: now - 7day)</em><p>計算的起始日期，預設為前7天</p><p><strong>Example</strong>:</p><pre>2016-10-30</pre></li><li><strong>enddate</strong>: <em>required (string - default: now)</em><p>計算的結束日期，預設為今天</p><p><strong>Example</strong>:</p><pre>2016-11-02</pre></li></ul></div><div class="tab-pane" id="popularword_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles__articleId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/articles</span>/{articleId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>刪除一筆研報、議題</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles__articleId__delete_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles__articleId__delete_request"><h3>URI Parameters</h3><ul><li><strong>articleId</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>type</strong>: <em>required (string)</em><p>議題 theme, 研報 report</p><p><strong>Example</strong>:</p><pre>report</pre></li></ul></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="popularword" class="panel-title">/popularword</h3></div><div class="panel-body"><div class="top-resource-description"><p>官網自動提示字的靜態檔</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_popularword"><span class="parent"></span>/popularword</a> <span class="methods"><a href="#popularword_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_popularword" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#popularword_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>官網自動提示字的靜態檔</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="popularword_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/popularword</h4></div><div class="modal-body"><div class="alert alert-info"><p>官網自動提示字的靜態檔</p></div><ul class="nav nav-tabs"><li class="active"><a href="#popularword_get_request" data-toggle="tab">Request</a></li><li><a href="#popularword_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="popularword_get_request"><h3>Query Parameters</h3><ul><li><strong>startdate</strong>: <em>(string - default: today - 7day)</em><p>計算的起始日期，預設為前7天</p><p><strong>Example</strong>:</p><pre>2016-10-30</pre></li><li><strong>enddate</strong>: <em>(string - default: today)</em><p>計算的結束日期，預設為今天</p><p><strong>Example</strong>:</p><pre>2016-11-02</pre></li></ul></div><div class="tab-pane" id="popularword_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
   "total": 3,
   "hits":[
   {
@@ -603,4 +603,73 @@
 </code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
 "message": "Can&#39;t connect to Elasticsearch"
 }
-</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#articles">/articles</a></li><li><a href="#popularword">/popularword</a></li></ul></div></div></div></div></body></html>
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="popularwordcms" class="panel-title">/popularwordcms</h3></div><div class="panel-body"><div class="top-resource-description"><p>CMS 的熱門搜尋字</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_popularwordcms"><span class="parent"></span>/popularwordcms</a> <span class="methods"><a href="#popularwordcms_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_popularwordcms" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#popularwordcms_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>CMS 的熱門搜尋字</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="popularwordcms_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/popularwordcms</h4></div><div class="modal-body"><div class="alert alert-info"><p>CMS 的熱門搜尋字</p></div><ul class="nav nav-tabs"><li class="active"><a href="#popularwordcms_get_request" data-toggle="tab">Request</a></li><li><a href="#popularwordcms_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="popularwordcms_get_request"><h3>Query Parameters</h3><ul><li><strong>source</strong>: <em>(string - default: all)</em><p>熱門字的來源，分為 <code>autocomplete</code>、<code>userkeyin</code>、<code>homepage</code>、<code>article</code> 四種以及全選 <code>all</code> ，預設為 <code>all</code></p><p><strong>Example</strong>:</p><pre>autocomplete</pre></li><li><strong>startdate</strong>: <em>(string - default: today - 7day)</em><p>計算的起始日期，預設為前7天</p><p><strong>Example</strong>:</p><pre>2016-10-30</pre></li><li><strong>enddate</strong>: <em>(string - default: today)</em><p>計算的結束日期，預設為今天</p><p><strong>Example</strong>:</p><pre>2016-11-02</pre></li></ul></div><div class="tab-pane" id="popularwordcms_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "total": 8,
+  "hits":[
+  {
+    "word":"美國",
+    "source":"autocomplete",
+    "count":100,
+    "hasFund":true,
+    "hasTheme":true,
+    "hasReport":true
+  },
+  {
+    "word":"美國",
+    "source":"userkeyin",
+    "count":200,
+    "hasFund":true,
+    "hasTheme":true,
+    "hasReport":true
+  },
+  {
+    "word":"美國",
+    "source":"homepage",
+    "count":300,
+    "hasFund":true,
+    "hasTheme":true,
+    "hasReport":true
+  },
+  {
+    "word":"美國",
+    "source":"article",
+    "count":400,
+    "hasFund":true,
+    "hasTheme":true,
+    "hasReport":true
+  },
+  {
+    "word":"總統大選",
+    "source":"autocomplete",
+    "count":150,
+    "hasFund":false,
+    "hasTheme":true,
+    "hasReport":true
+  },
+  {
+    "word":"總統大選",
+    "source":"userkeyin",
+    "count":10,
+    "hasFund":false,
+    "hasTheme":true,
+    "hasReport":true
+  },
+  {
+    "word":"總統大選",
+    "source":"homepage",
+    "count":1000,
+    "hasFund":false,
+    "hasTheme":true,
+    "hasReport":true
+  },
+  {
+    "word":"總統大選",
+    "source":"article",
+    "count":100,
+    "hasFund":false,
+    "hasTheme":true,
+    "hasReport":true
+  },
+  ]
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#articles">/articles</a></li><li><a href="#popularword">/popularword</a></li><li><a href="#popularwordcms">/popularwordcms</a></li></ul></div></div></div></div></body></html>
