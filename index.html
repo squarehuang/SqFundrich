@@ -1,6 +1,6 @@
-<!DOCTYPE HTML><html><head><title>fundrich API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/kevinrenskers/raml2html 2.4.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script><script type="text/javascript">
+<!DOCTYPE HTML><html><head><title>fundrich API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 6.0.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
       $(document).ready(function() {
-        $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
           hljs.highlightBlock(block);
         });
 
@@ -92,6 +92,9 @@
       .tab-pane ul {
         padding-left: 2em;
       }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
       .tab-pane h2 {
         font-size: 1.2em;
         padding-bottom: 4px;
@@ -142,7 +145,28 @@
       .list-group-item:hover {
         background-color: #f5f5f5;
       }
-    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>fundrich API documentation <small>version v1</small></h1><p>http://10.1.81.211:80/fundrich_api/v1</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="articles" class="panel-title">/articles</h3></div><div class="panel-body"><div class="top-resource-description"><p>官網 全文搜尋 與 CMS 新增/更新研報、議題</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_articles"><span class="parent"></span>/articles</a> <span class="methods"><a href="#articles_get"><span class="badge badge_get">get</span></a> <a href="#articles_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_articles" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#articles_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#articles_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>新增一筆議題、研報，Add new article information</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/articles</h4></div><div class="modal-body"><div class="alert alert-info"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles_get_request" data-toggle="tab">Request</a></li><li><a href="#articles_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles_get_request"><h3>Query Parameters</h3><ul><li><strong>keyword</strong>: <em>required (string)</em><p>搜尋字詞</p><p><strong>Example</strong>:</p><pre>英國</pre></li><li><strong>startindex</strong>: <em>required (integer)</em><p>start index in ES table</p><p><strong>Example</strong>:</p><pre><code>1</code></pre></li><li><strong>offset</strong>: <em>required (integer - default: 10)</em><p>每個 Type 回傳的筆數</p><p><strong>Example</strong>:</p><pre><code>2</code></pre></li><li><strong>sort</strong>: <em>(string - default: relevance)</em><p>排序欄位 <code>clickcnt</code> 點擊數, <code>time</code> 日期, <code>relevance</code> 相關性</p><p><strong>Example</strong>:</p><pre>time</pre></li><li><strong>order</strong>: <em>(string - default: desc)</em><p>排序方式 <code>asc</code> 遞增, <code>desc</code> 遞減</p><p><strong>Example</strong>:</p><pre>desc</pre></li></ul></div><div class="tab-pane" id="articles_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+      .items {
+        background: #f5f5f5;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+      }
+      .examples {
+        margin-left: 0.5em;
+      }
+      .resource-modal li > ul {
+        margin-bottom: 1em;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>fundrich API documentation <small>version v1</small></h1><p>http://10.1.81.211:80/fundrich_api/{version}</p><ul><li><strong>version</strong>: <em>required (v1)</em></li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="articles" class="panel-title">/articles</h3></div><div class="panel-body"><div class="top-resource-description"><p>官網 全文搜尋 與 CMS 新增/更新研報、議題</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_articles"><span class="parent"></span>/articles</a> <span class="methods"><a href="#articles_get"><span class="badge badge_get">get</span></a> <a href="#articles_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_articles" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#articles_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#articles_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>新增一筆研報、議題</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/articles</h4></div><div class="modal-body"><div class="alert alert-info"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles_get_request" data-toggle="tab">Request</a></li><li><a href="#articles_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles_get_request"><h3>Query Parameters</h3><ul><li><strong>keywords</strong>: <em>required (string)</em><p>搜尋字詞</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>英國</code></pre></div></li><li><strong>startindex</strong>: <em>required (integer - default: 0)</em><p>start index in ES table</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>1</code></pre></div></li><li><strong>offset</strong>: <em>required (integer - default: 10)</em><p>每個 Type 回傳的筆數</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>2</code></pre></div></li><li><strong>sort</strong>: <em>required (string - default: relevance)</em><p>排序欄位 <code>clickcnt</code> 點擊數, <code>time</code> 日期, <code>relevance</code> 相關性</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>time</code></pre></div></li><li><strong>order</strong>: <em>required (string - default: desc)</em><p>排序方式 <code>asc</code> 遞增, <code>desc</code> 遞減</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>desc</code></pre></div></li></ul></div><div class="tab-pane" id="articles_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "total": 6,
   "hits":{
     "fund":[
@@ -152,7 +176,7 @@
         "titleEng":"Schroder ISF UK Equity C Acc",
         "StarRating":4,
         "RiskRating":1,
-        "score":"3.73"
+        "score":3.73
       },
       {
         "pid":"0P00000AZI",
@@ -160,7 +184,7 @@
         "titleEng":"BGF United Kingdom A2",
         "StarRating":4,
         "RiskRating":1,
-        "score":"3.1"
+        "score":3.1
       }
     ],
     "theme":[
@@ -169,199 +193,117 @@
         "title":"英國脫歐後，維持債券投資的三個理由",
         "subtitle":"6月23日英國公投決定正式脫歐，事前數個月的不確定性，事後繼續延燒。隨著塵埃落定，聯博認為投資人不應該「出脫」債券基金，其中有三個理由。",
         "imgUrl":"",
-        "score":"2.12"
+        "score":2.12
       },
       {
         "pid":"28",
         "title":"英國退歐、行情風雲變色",
         "subtitle":"六月份黃金基金閃亮",
         "imgUrl":"Theme_28.jpg",
-        "score":"2.12"
+        "score":2.12
       }
   ],
   "report":[
     {
       "pid":"1",
       "title":"新興債為經理人加碼度最高的債市1",
-      "score":"2.12",
+      "score":2.12,
       "pdfUrl":"/fundrich/Report_1.pdf"
     },
     {
       "pid":"14",
       "title":"英國脫歐：何去何從？",
-      "score":"2.12",
+      "score":2.12,
       "pdfUrl":"/fundrich/Report_2.pdf"
     }
   ]
 }
 }
-</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
-"message": "Can&#39;t connect to Elasticsearch"
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message":"Could not connect to Elasticsearch Server,
+  "localized_message":"Could not connect to Elasticsearch Server"
 }
-</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/articles</h4></div><div class="modal-body"><div class="alert alert-info"><p>新增一筆議題、研報，Add new article information</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles_post_request" data-toggle="tab">Request</a></li><li><a href="#articles_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>- theme:
-  {
-    "type": "object",
-    "properties": {
-      "pid":  {
-        "type": "string",
-        "description": "議題ID",
-        "required": true
-              },
-      "type": {
-        "type": "string",
-        "description": "議題: theme",
-        "required": true
-              },
-      "title":{
-        "type": "string",
-        "description": "議題標題"
-              },
-      "subtitle":{
-        "type": "string",
-        "description": "議題子標題"
-              },
-      "summary":{
-        "type": "string",
-        "description": "議題摘要"
-              },
-      "content":{
-        "type": "string",
-        "description": "議題內文"
-              },
-      "imgUrl":{
-        "type": "string",
-        "description": "議題圖片路徑"
-              },
-      "origin":{
-        "type": "string",
-        "description": "議題來源/作者"
-              },
-      "startViews":{
-        "type": "string",
-        "description": "議題增值點閱數"
-        },
-      "onDate":{
-        "type": "string",
-        "description": "上架日期"
-              },
-      "offDate":{
-        "type": "string",
-        "description": "下架日期"
-              },
-      "availableMode":{
-        "type": "string",
-        "description": "有效碼 0:無效,1:有效"
-              },
-      "publishTime":{
-        "type": "string",
-        "description": "議題發稿日期"
-              },
-      "addKeywords":{
-        "type": "nested",
-        "description": "此次操作有新增的 Keywords"
-              }
+</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/articles</h4></div><div class="modal-body"><div class="alert alert-info"><p>新增一筆研報、議題</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles_post_request" data-toggle="tab">Request</a></li><li><a href="#articles_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: ThemeInput | ReportInput</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>theme</strong>:<br></p><pre><code>{
+  "pid": "500",
+  "type": "theme",
+  "origin": "鉅亨網",
+  "title": "近五年原幣報酬率位居亞洲債券型基金組別第一(台灣核備銷售)-貝萊德亞洲老虎債券基金A2美元",
+  "subtitle": "貝萊德亞洲老虎債券基金的表現相對穩定",
+  "summary": "基金績效及風險方面 在晨星亞洲債券型基金組別中，貝萊德亞洲老虎債券基金的表現相對穩定。受惠於此基金在國家及產業",
+  "content": "亞洲國家在經歷亞洲金融風暴後，經濟體質越見改善；其中，中國近年政府債務佔GDP的比例，低於已開發國家",
+  "onDate": "2016-06-23",
+  "offDate": "2016-10-23",
+  "availableMode": 1,
+  "imgUrl": "Theme_8jpg",
+  "startViews": 100,
+  "publishTime": "2016-06-23",
+  "addKeywords": [
+    {
+      "keywordName": "債券基金",
+      "score": 1
     }
--report:
-  {
-    "type": "object",
-    "properties": {
-      "pid":  {
-        "type": "string",
-        "description": "研報ID",
-        "required": true
-              },
-      "type":{
-        "type": "string",
-        "description": "研報 report",
-        "required": true
-        },
-      "title":{
-        "type": "string",
-        "description": "研報標題"
-            },
-      "summary":{
-        "type": "string",
-        "description": "研報摘要"
-            },
-      "pdfUrl":{
-        "type": "string",
-        "description": "研究報告PDF路徑"
-            },
-      "origin":{
-        "type": "string",
-        "description": "研報來源"
-              },
-      "addRelatedFund":{
-        "type": "array",
-        "description": "新增研報的相關基金代碼"
-              },
-      "startViews":{
-        "type": "string",
-        "description": "研報增值點閱數"
-              },
-      "addKeywords":{
-        "type": "nested",
-        "description": "有效的 Keywords"
-              },
-      "deleteKeywords":{
-        "type": "nested",
-        "description": "無效的 Keywords，即使用者刪除的 Keywords"
-              },
-      "onDate":{
-        "type": "string",
-        "description": "上架日期"
-              },
-      "offDate":{
-        "type": "string",
-        "description": "下架日期"
-              },
-      "availableMode":{
-        "type": "string",
-        "description": "有效碼 0:無效,1:有效"
-              }
+  ]
+}</code></pre><p><strong>report</strong>:<br></p><pre><code>{
+  "pid": "1",
+  "type": "report",
+  "origin": "富蘭克林證券投顧1",
+  "title": "新興債為經理人加碼度最高的債市1",
+  "summary": "英國退歐公投在即，市場普遍抱持觀望態度而不敢躁進，恐慌氣氛更一度使得美國十年期公債殖利率跌破支撐、德國公債降至負利率水準，但美銀美林證券六月例行的全球固定收益型基金經理人調查中顯示，除了新興國家公債加碼度上升外，受訪經理人對美國等多數債市看好度呈現下滑，尤其邊陲歐洲國家公債看多部位更大幅下降，風險趨避心態濃厚，美元則是唯一獲加碼的貨幣。1",
+  "addRelatedFund": [
+    "002010",
+    "002018"
+  ],
+  "addKeywords": [
+    {
+      "keywordName": "英國",
+      "score": 10
+    },
+    {
+      "keywordName": "股票",
+      "score": 1
+    },
+    {
+      "keywordName": "股債混合",
+      "score": 1
+    },
+    {
+      "keywordName": "產業股票",
+      "score": 1
+    },
+    {
+      "keywordName": "目標期限",
+      "score": 1
+    },
+    {
+      "keywordName": "保證基金",
+      "score": 1
+    },
+    {
+      "keywordName": "美國",
+      "score": 9
+    },
+    {
+      "keywordName": "全球",
+      "score": 1
+    },
+    {
+      "keywordName": "成熟市場",
+      "score": 5
+    },
+    {
+      "keywordName": "新興市場",
+      "score": 0
     }
-</code></pre><p><strong>Example</strong>:</p><pre><code>- theme:
-{
-  "pid":"500",
-  "type":"theme",
-  "origin":"鉅亨網",
-  "title":"近五年原幣報酬率位居亞洲債券型基金組別第一(台灣核備銷售)-貝萊德亞洲老虎債券基金A2美元",
-  "subtitle":"貝萊德亞洲老虎債券基金的表現相對穩定",
-  "summary":"基金績效及風險方面: 在晨星亞洲債券型基金組別中，貝萊德亞洲老虎債券基金的表現相對穩定。受惠於此基金在國家及產業",
-  "content":"亞洲國家在經歷亞洲金融風暴後，經濟體質越見改善；其中，中國近年政府債務佔GDP的比例，低於已開發國家....",
-  "addKeywords":[{"keywordName":"債券基金","score":"10"}],
-  "deleteKeywords":[{"keywordName":"GDP"}],
-  "onDate":"2016-06-23",
-  "offDate":"2016-10-23",
-  "availableMode":"1",
-  "imgUrl":"Theme_8.jpg",
-  "startViews":"100",
-  "publishTime":"2016-06-23"
-
-}
-- report:
-{
-  "pid":"1",
-  "type":"report",
-  "origin":"富蘭克林證券投顧1",
-  "title":"新興債為經理人加碼度最高的債市1",
-  "summary":"英國退歐公投在即，市場普遍抱持觀望態度而不敢躁進，恐慌氣氛更一度使得美國十年期公債殖利率跌破支撐、德國公債降至負利率水準，但美銀美林證券六月例行的全球固定收益型基金經理人調查中顯示，除了新興國家公債加碼度上升外，受訪經理人對美國等多數債市看好度呈現下滑，尤其邊陲歐洲國家公債看多部位更大幅下降，風險趨避心態濃厚，美元則是唯一獲加碼的貨幣。1",
-  "addRelatedFund":["101E","AGEYGB"],
-  "addKeywords":[{"keywordName":"英國","score":"10"},{"keywordName":"股票","score":"1"},{"keywordName":"股債混合","score":"1"},{"keywordName":"產業股票","score":"1"},{"keywordName":"目標期限","score":"1"},{"keywordName":"保證基金","score":"1"},{"keywordName":"美國","score":"9"},{"keywordName":"全球","score":"1"},{"keywordName":"成熟市場","score":"5"},{"keywordName":"新興市場","score":"10"}],
-  "onDate":"2016-06-22",
-  "offDate":"2016-08-04",
-  "availableMode":"1",
-  "startViews":"1001",
-  "pdfUrl":"/fundrich/Report_1.pdf"
-}
-</code></pre></div><div class="tab-pane" id="articles_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
-  "message": "[report][3]: document already exists"
+  ],
+  "onDate": "2016-06-22",
+  "offDate": "2016-08-04",
+  "availableMode": 1,
+  "startViews": 1001,
+  "pdfUrl": "/fundrich/Report_1.pdf"
+}</code></pre></div></div><div class="tab-pane" id="articles_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "[report][3]: document already exists",
   "localized_message": "[report][3]: document already exists"
-}
-</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
-  "message": "Can&#39;t connect to Elasticsearch"
- }
-</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_articles_types__type_"><span class="parent">/articles</span>/types/{type}</a> <span class="methods"><a href="#articles_types__type__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_articles_types__type_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#articles_types__type__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>根據指定的 <code>type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list where <code>type = {type}</code></p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles_types__type__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/articles</span>/types/{type}</h4></div><div class="modal-body"><div class="alert alert-info"><p>根據指定的 <code>type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list where <code>type = {type}</code></p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles_types__type__get_request" data-toggle="tab">Request</a></li><li><a href="#articles_types__type__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles_types__type__get_request"><h3>URI Parameters</h3><ul><li><strong>type</strong>: <em>required (string)</em><p>議題 theme, 基金 fund, 研報 report</p></li></ul><h3>Query Parameters</h3><ul><li><strong>keyword</strong>: <em>required (string)</em><p>搜尋字詞</p><p><strong>Example</strong>:</p><pre>英國</pre></li><li><strong>startindex</strong>: <em>required (integer)</em><p>start index in ES table</p></li><li><strong>offset</strong>: <em>required (integer - default: 10)</em><p>回傳的筆數</p><p><strong>Example</strong>:</p><pre><code>2</code></pre></li><li><strong>sort</strong>: <em>(string - default: relevance)</em><p>排序欄位 <code>clickcnt</code> 點擊數, <code>time</code> 日期, <code>relevance</code> 相關性</p><p><strong>Example</strong>:</p><pre>time</pre></li><li><strong>order</strong>: <em>(string - default: desc)</em><p>排序方式 <code>asc</code> 遞增, <code>desc</code> 遞減</p><p><strong>Example</strong>:</p><pre>desc</pre></li></ul></div><div class="tab-pane" id="articles_types__type__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+}</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_articles_types__type_"><span class="parent">/articles</span>/types/{type}</a> <span class="methods"><a href="#articles_types__type__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_articles_types__type_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#articles_types__type__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles_types__type__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/articles</span>/types/{type}</h4></div><div class="modal-body"><div class="alert alert-info"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles_types__type__get_request" data-toggle="tab">Request</a></li><li><a href="#articles_types__type__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles_types__type__get_request"><h3>URI Parameters</h3><ul><li><strong>type</strong>: <em>required (string)</em><p>議題 theme, 基金 fund, 研報 report</p></li></ul><h3>Query Parameters</h3><ul><li><strong>keywords</strong>: <em>required (string)</em><p>搜尋字詞</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>英國</code></pre></div></li><li><strong>startindex</strong>: <em>required (integer - default: 0)</em><p>start index in ES table</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>1</code></pre></div></li><li><strong>offset</strong>: <em>required (integer - default: 10)</em><p>回傳的筆數</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>2</code></pre></div></li><li><strong>sort</strong>: <em>required (string - default: relevance)</em><p>排序欄位 <code>clickcnt</code> 點擊數, <code>time</code> 日期, <code>relevance</code> 相關性</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>time</code></pre></div></li><li><strong>order</strong>: <em>required (string - default: desc)</em><p>排序方式 <code>asc</code> 遞增, <code>desc</code> 遞減</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>desc</code></pre></div></li></ul></div><div class="tab-pane" id="articles_types__type__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "total": 2,
   "hits":[
     {
@@ -370,7 +312,7 @@
       "titleEng":"Schroder ISF UK Equity C Acc",
       "StarRating":4,
       "RiskRating":1,
-      "score":"3.73"
+      "score": 3.73
     },
     {
       "pid":"0P00000AZI",
@@ -378,298 +320,273 @@
       "titleEng":"BGF United Kingdom A2",
       "StarRating":4,
       "RiskRating":1,
-      "score":"3.1"
+      "score": 3.1
     }
   ]
 }
-</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
-"message": "Can&#39;t connect to Elasticsearch"
-}
-</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_articles__articleId_"><span class="parent">/articles</span>/{articleId}</a> <span class="methods"><a href="#articles__articleId__get"><span class="badge badge_get">get</span></a> <a href="#articles__articleId__post"><span class="badge badge_post">post</span></a> <a href="#articles__articleId__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_articles__articleId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#articles__articleId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>根據 <code>articleId</code>，取得基金、議題的關鍵字列表，<code>score</code> 為使用者給定的關鍵字分數，<code>source</code>為關鍵字的來源 <code>manual</code> 代表人工給定，<code>metadata</code> 表示研報PDF檔的 metadata 給予的關鍵字，Get article keywords with <code>articleId = {articleId}</code></p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#articles__articleId__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>更新議題、研報的資訊(標題、內容、作者、關鍵字列表...)<code>addKeywords</code> 為有效的 Keywords，<code>deleteKeywords</code>為無效的 Keywords (黑名單)，Update ariticle information with <code>articleId = {articleId}</code></p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#articles__articleId__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>刪除一筆研報、議題</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles__articleId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/articles</span>/{articleId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>根據 <code>articleId</code>，取得基金、議題的關鍵字列表，<code>score</code> 為使用者給定的關鍵字分數，<code>source</code>為關鍵字的來源 <code>manual</code> 代表人工給定，<code>metadata</code> 表示研報PDF檔的 metadata 給予的關鍵字，Get article keywords with <code>articleId = {articleId}</code></p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles__articleId__get_request" data-toggle="tab">Request</a></li><li><a href="#articles__articleId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles__articleId__get_request"><h3>URI Parameters</h3><ul><li><strong>articleId</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>type</strong>: <em>required (string)</em><p>議題 theme, 基金 fund, 研報 report</p><p><strong>Example</strong>:</p><pre>report</pre></li><li><strong>size</strong>: <em>(integer - default: 10)</em><p>關鍵字個數</p><p><strong>Example</strong>:</p><pre><code>3</code></pre></li></ul></div><div class="tab-pane" id="articles__articleId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
-  "total": 4,
-  "hits":[
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Put Column Value Error : Could not connect to Elasticsearch Server",
+  "localized_message": "Put Column Value Error : Could not connect to Elasticsearch Server"
+}</code></pre></div></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_articles__articleid_"><span class="parent">/articles</span>/{articleId}</a> <span class="methods"><a href="#articles__articleid__get"><span class="badge badge_get">get</span></a> <a href="#articles__articleid__post"><span class="badge badge_post">post</span></a> <a href="#articles__articleid__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_articles__articleid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#articles__articleid__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>根據 <code>articleId</code>，取得基金、議題、研報的資訊</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#articles__articleid__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>更新議題、研報的資訊(標題、內容、作者、關鍵字列表...)<code>addKeywords</code> 為有效的 Keywords，<code>deleteKeywords</code>為無效的 Keywords(即刪除keywords操作)，Update ariticle information with <code>articleId = {articleId}</code></p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#articles__articleid__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>刪除一筆研報、議題</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles__articleid__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/articles</span>/{articleId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>根據 <code>articleId</code>，取得基金、議題、研報的資訊</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles__articleid__get_request" data-toggle="tab">Request</a></li><li><a href="#articles__articleid__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles__articleid__get_request"><h3>URI Parameters</h3><ul><li><strong>articleId</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>type</strong>: <em>required (string)</em><p>基金 fund, 議題 theme, 研報 report</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>report</code></pre></div></li></ul></div><div class="tab-pane" id="articles__articleid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>fund</strong>:<br></p><pre><code>{
+  "found": true,
+  "pid": "042011",
+  "title": "貝萊德新興市場債券基金 A3 美元",
+  "titleEng": "BGF EMERGING MARKETS BOND A3",
+  "investmentStrategy": "新興市場債券基金以盡量提高總回報為目標.基金將不少於70%的總資產投資於新興市場的政府和機構或在當地註冊或從事大部份經濟活動的公司的定息可轉讓證券.基金可投資於全線可供選擇的證券,包括非投資級證券.貨幣風險將靈活管理.",
+  "investmentStrategyEng": "The Emerging Markets Bond Fund seeks to maximise total return.The Fund invests at least 70%of its total assets in the fixed income transferable securities of governments and agencies of,and companies domiciled or exercising the predominant part of their economic activity in,emerging markets.The Fund may invest in the full spectrum of available securities,including non-investment grade.Currency exposure is flexibly managed.",
+  "stock": [
+    "TREASURY BOND 2.875 05/15/2043",
+    "BGF EM Corporate Bond Fund X2 USD",
+    "PANAMA (REPUBLIC OF) 4 09/22/2024",
+    "URUGUAY (ORIENTAL REPUBLIC OF) 5.1 06/18/2050",
+    "SERBIA REPUBLIC OF (GOVERNMENT) RegS 4.875 02/25/2020",
+    "1MDB GLOBAL INVESTMENTS LTD 4.4 03/09/2023",
+    "ANGOLA (REPUBLIC OF) RegS 9.5 11/12/2025",
+    "SINOPEC GROUP OVERSEAS DEVELOPMENT RegS 3.25 04/28/2025",
+    "IRAQ (REPUBLIC OF) RegS 5.8 01/15/2028",
+    "RUSSIAN FEDERATION RegS 4.75 05/27/2026"
+  ],
+  "cat": "新興市場債券",
+  "catEng": "Global Emerging Markets Bond",
+  "broadCat": "債券基金",
+  "broadCatEng": "Fixed Income",
+  "currencyCode": "USD",
+  "createTime": "2017-03-19T23:26:42",
+  "dbUpdateTime": "2017-03-20T00:15:07.570",
+  "location": "盧森堡",
+  "locationEng": "Luxembourg",
+  "areaName": "全球新興市場",
+  "areaNameEng": "Global Emerging Mkts",
+  "origin": "貝萊德證券投資信託股份有限公司",
+  "originEng": "BlackRock Investment Mngt (Taiwan) Ltd",
+  "originAsset": "貝萊德(盧森堡)公司",
+  "originAssetEng": "BlackRock (Luxembourg) SA",
+  "riskRating": 3,
+  "sumViews": 0,
+  "userUpdateTime": "2017-03-19T23:26:42",
+  "availableMode": 1
+}</code></pre><p><strong>theme</strong>:<br></p><pre><code>{
+  "found": true,
+  "pid": "2072",
+  "title": "掌握資金潮，投資『金、高、興』(FR勿刪)",
+  "content": "&lt;iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/YW2S00oP5ck?rel=0\" frameborder=\"0\" allowfullscreen=\"\"&gt;&lt;/iframe&gt;&lt;p&gt;&lt;span id=\"_xhe_cursor\"&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;&lt;iframe width=\"595\" height=\"485\" src=\"//www.slideshare.net/slideshow/embed_code/key/uscfU7yadz2qfq\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" allowfullscreen=\"\" style=\"border: 1px solid rgb(204, 204, 204); border-image: none; margin-bottom: 5px; max-width: 100%;\"&gt; &lt;/iframe&gt; &lt;div style=\"margin-bottom: 5px;\"&gt; &lt;strong&gt; &lt;a title=\"M212(富蘭克林)\" href=\"//www.slideshare.net/KarenWu29/m212\" target=\"_blank\"&gt;M212(富蘭克林)&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=\"//www.slideshare.net/KarenWu29\" target=\"_blank\"&gt;Karen Wu&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;",
+  "origin": "富蘭克林投顧(2016/8/17)",
+  "summary": "因應全球溫和成長與英國退歐衝擊，預期聯準會將維持鴿派，其他主要央行可能再擴大寬鬆政策，這股資金潮至少將延續至2017年，營造股市大漲小回的多頭行情。建議投資人掌握資金脈動，鎖定「黃金、高息資產、新興市場(產業)」三大趨勢，輕鬆搭乘資金行情列車。",
+  "offDate": "2017-08-01T00:00:00",
+  "onDate": "2016-11-01T00:00:00",
+  "userUpdateTime": "2017-03-15T18:25:59.763",
+  "createTime": "2016-08-17T00:00:00",
+  "availableMode": 1,
+  "keywords": [
+    "天然資源",
+    "生技",
+    "行動科技",
+    "高息資產",
+    "富蘭克林",
+    "富蘭克林坦伯頓天然資源基金",
+    "富蘭克林坦伯頓新興國家小型企業基金",
+    "富蘭克林黃金基金",
+    "聯準會鴿派"
+  ],
+  "imgUrl": "Theme_2072.jpg",
+  "dbUpdateTime": "2017-03-20T01:15:06.407",
+  "publishTime": "2016-08-17T00:00:00",
+  "startViews": 0,
+  "sumViews": 74,
+  "views": 74
+}</code></pre><p><strong>report</strong>:<br></p><pre><code>{
+  "found": true,
+  "pid": "1888",
+  "title": "新興債為經理人加碼度最高的債市",
+  "content": "B L A C K R O C KB U L L E T I N\nV I E W SF R O MO U RS T R A T E G I S T SA N DP O R T F O L I OT E A M S\n英國公投決定脫歐預計將為英國與歐盟帶來長時間政治經濟和市場\n的不確定性\n我們預期全球風險性資產將面臨拋售潮同時也帶來逢低買進的機會\n公投結果不會改變貝萊德對客戶的歐洲資產管理也不會影響我們資產\n管理的方式\n英國公投決定離開歐盟將帶來長期政經上的影響我們預期歐洲領導人得花\n更多心力去抑制國內因英國脫歐而觸發的民粹運動同時還要防止歐盟垮台\n這意指英國將處於嚴峻的談判立場而歐盟將減少關注更加必需的結構性改\n革我們預期英國對移民的態度將更強硬未來恐有長期處於孤立的風險為\n歐洲增加更多不確定性\n卡麥隆David Cameron已宣布他將於今年十月前辭去英國首相脫歐派的\n支持者很可能會主導今年夏天的保守黨黨魁選舉這增加了不確定性以及在脫\n歐協商上的情緒性反應另外蘇格蘭可能再次舉行獨立公投\n我們預期英國脫歐將造成市場混亂過程冗長又代價高昂脫歐之後英國與\n歐盟的法令分離暫停與歐盟及其他國家的貿易協定我們預期出口服務及資\n金流所面臨的潛在損失將大於支付給歐盟較少費用的好處\n歐洲或將處於失業率上升與經濟成長率低迷的困境導致歐元歐股歐洲信\n貸與歐洲周邊國家債券長期走弱如義大利公債另一方面我們預期政府所\n面臨的財政壓力有限因為在低利率的環境下高品質的政府債券需求仍然持\n續\n英國央行的首要任務是提供足夠的流動性以避免融資壓力英鎊貶值幅度與波\n動性可能迫使央行作出應對措施我們認為英國央行可能很快就會調降現行\n的利率至零利率並重返量化寬鬆而非馬上施行負利率我們預期信\n評機構將立即調整英國公債至負面展望並隨後調降評等\n預期此公投結果將引發全球股票和其他風險資產下跌然而拋售潮也會產生投\n資機會美國和亞洲市場所受到的波及有限且受惠於寬鬆貨幣政策和較強勁\n的經濟成長英國方面我們認為大型股FTSE100指數的表現會比著重在內需\n市場的FTSE250指數好英鎊下跌對於營收來自海外的大型企業來說反而是利\n多然而以內需為主的營建零售和金融等產業則較易受到衝擊\n在未來一年商業大樓的價值可能因倫敦中心供給過度而減少約我們認\n為承租需求會大幅下降且短期租約比例將變多海外投資人對於英國資產勢\n必要求更多的風險溢酬然而大部分開發商的融資期間較為長期所以因為\n債務所驅使的賣壓風險會較輕微\n英國公投結果脫歐\nJune\nWHY BLACKROCK\nBlackRock helps people around the worldas well as the worlds largest\ninstitutions and governmentspursue their investing goalsWe offer\nA comprehensive set of innovative solutions\nGlobal market and investment insights\nSophisticated risk and portfolio analytics\n貝萊德證券投資信託股份有限公司獨立經營管理台北市敦化南路二段95號28樓電話0223261600本檔僅作參考資料和教育\n用途在招攬或向任何人士分發屬違法的任何司法管轄區本檔並不構成與任何證券或貝萊德基金有關的招攬此外亦不構成與\n本檔收件人簽訂投資協定的要約或透過提出簽訂投資協定的要約邀請收件人作出回應\n本檔可能含有前瞻性資訊這些資訊可能包括預測預報收益或回報估計及可能的投資組合構成此外本文包括其他投資\n工具或貝萊德所管理的綜合帳戶之若干過往表現資料該等表現資料僅作為舉例用途概無聲明表示任何貝萊德基金將會取得所示\n的表現或已考慮或列出擬備本檔期間就取得計算或呈列前瞻性資料或往績資料時所作的各項假設若擬備本檔期間所作的假設\n出現任何轉變可能會對作為舉例用途的所示投資回報構成重大的影響\n本檔並不構成對未來事件的預估研究或投資建議也不應該被視為購買出售任何證券或採用任何投資策略的建議本文件所載\n的任何意見反映本公司截至2016年6月24日的判斷可因其後的條件轉變而作出變動本檔所載的資訊及意見取自貝萊德認為\n可靠的專有和非專有來源並不一定涵蓋所有資料亦不保證其準確性概不保證所作的任何預測將會實現貝萊德所管理的帳戶\n並不一定持有本檔所述的任何投資項目是否依賴本檔所載的資訊由閣下自行決定有關觀點不一定反映貝萊德集團旗下任何公司\n的全部或部分意見且不保證其準確性\n本檔僅載有一般資訊並不代表一般或特定的投資建議所載資料並無考慮閣下的財務狀況閣下應就個人的目標財政狀況及需\n要評估有關資訊對閣下來說是否合適\n過往的表現對未來的業績並不具指示作用投資價值及其收益可能升跌概不作出保證閣下可能無法取回原本的投資金額匯率\n變動或會導致投資價值反復波動\n本文件屬高度機密不得複製或分發予收件人以外的其他人士BLK2016231\n2016 貝萊德集團版權所有任何其他商標歸屬於其各自的所有人\nWant to know more\nblackrockcom\n為什麼選擇貝萊德\n貝萊德協助全世界的投資人達到投資目標包含全球大型機構法人及政府機關\n我們提供\n整合性的創新解決方案\n全球市場投資洞見\n專業的風險管理與投資組合分析\n想了解更多\nblackr tw",
+  "origin": "富蘭克林證券投顧",
+  "summary": "英國退歐公投在即，市場普遍抱持觀望態度而不敢躁進，恐慌氣氛更一度使得美國十年期公債殖利率跌破支撐、德國公債降至負利率水準，但美銀美林證券六月例行的全球固定收益型基金經理人調查中顯示，除了新興國家公債加碼度上升外，受訪經理人對美國等多數債市看好度呈現下滑，尤其邊陲歐洲國家公債看多部位更大幅下降，風險趨避心態濃厚，美元則是唯一獲加碼的貨幣。1",
+  "offDate": "2018-08-04T00:00:00",
+  "onDate": "2017-01-22T00:00:00",
+  "userUpdateTime": "2017-03-21T16:21:30",
+  "createTime": "2017-03-21T15:50:45",
+  "availableMode": 1,
+  "keywords": [
+    "股債混合",
+    "保證基金",
+    "全球",
+    "美國",
+    "股票",
+    "目標期限",
+    "新興市場",
+    "產業股票",
+    "成熟市場",
+    "英國"
+  ],
+  "pdfMetadataKeywords": [
+    "英國公投結果",
+    "脫歐",
+    "貝萊德"
+  ],
+  "pdfUrl": "/BLR_市場報告.pdf",
+  "relatedFund": [
+    "002010",
+    "002018"
+  ],
+  "relatedFundName": [
+    "柏瑞環球基金-柏瑞歐洲股票基金 A",
+    "柏瑞環球基金-柏瑞環球新興市場債券基金 AD"
+  ],
+  "startViews": 1001,
+  "sumViews": 1001
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Could not connect to Elasticsearch Server",
+  "localized_message": "Could not connect to Elasticsearch Server"
+}</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles__articleid__post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/articles</span>/{articleId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>更新議題、研報的資訊(標題、內容、作者、關鍵字列表...)<code>addKeywords</code> 為有效的 Keywords，<code>deleteKeywords</code>為無效的 Keywords(即刪除keywords操作)，Update ariticle information with <code>articleId = {articleId}</code></p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles__articleid__post_request" data-toggle="tab">Request</a></li><li><a href="#articles__articleid__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles__articleid__post_request"><h3>URI Parameters</h3><ul><li><strong>articleId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: ReportInput | ThemeInput</p><p><strong>Examples</strong>:</p><div class="examples"><p><strong>theme</strong>:<br></p><pre><code>{
+  "pid": "500",
+  "type": "theme",
+  "origin": "鉅亨網",
+  "title": "近五年原幣報酬率位居亞洲債券型基金組別第一(台灣核備銷售)-貝萊德亞洲老虎債券基金A2美元",
+  "subtitle": "貝萊德亞洲老虎債券基金的表現相對穩定",
+  "summary": "基金績效及風險方面 在晨星亞洲債券型基金組別中，貝萊德亞洲老虎債券基金的表現相對穩定。受惠於此基金在國家及產業",
+  "content": "亞洲國家在經歷亞洲金融風暴後，經濟體質越見改善；其中，中國近年政府債務佔GDP的比例，低於已開發國家",
+  "onDate": "2016-06-23",
+  "offDate": "2016-10-23",
+  "availableMode": 1,
+  "imgUrl": "Theme_8jpg",
+  "startViews": 100,
+  "publishTime": "2016-06-23",
+  "addKeywords": [
     {
-      "term":"避險基金",
-      "score":"4",
-      "source":["manual"]
-    },
+      "keywordName": "GDP",
+      "score": 1
+    }
+  ],
+  "deleteKeywords": [
     {
-      "term":"成熟市場",
-      "score":"3",
-      "source":["manual","metadata"]
-    },
-    {
-      "term":"脫歐",
-      "score":"2",
-      "source":["metadata"]
-    },
-    {
-      "term":"英國公投結果",
-      "score":"1",
-      "source":["metadata"]
+      "keywordName": "債券基金"
     }
   ]
-}
-</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
- "message": "Can&#39;t connect to Elasticsearch"
-}
-</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles__articleId__post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/articles</span>/{articleId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>更新議題、研報的資訊(標題、內容、作者、關鍵字列表...)<code>addKeywords</code> 為有效的 Keywords，<code>deleteKeywords</code>為無效的 Keywords (黑名單)，Update ariticle information with <code>articleId = {articleId}</code></p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles__articleId__post_request" data-toggle="tab">Request</a></li><li><a href="#articles__articleId__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles__articleId__post_request"><h3>URI Parameters</h3><ul><li><strong>articleId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>-theme:
-  {
-   "type": "object",
-   "properties": {
-     "type":{
-       "type": "string",
-       "description": "議題 theme",
-       "required": true
-       },
-     "title":{
-       "type": "string",
-       "description": "議題標題"
-           },
-     "subtitle":{
-       "type": "string",
-       "description": "議題子標題"
-           },
-     "summary":{
-       "type": "string",
-       "description": "議題摘要"
-           },
-     "content":{
-       "type": "string",
-       "description": "議題內文"
-           },
-     "imgUrl":{
-       "type": "string",
-       "description": "議題圖片路徑"
-             },
-     "origin":{
-       "type": "string",
-       "description": "議題發布來源/作者"
-             },
-     "startViews":{
-       "type": "string",
-       "description": "議題增值點閱數"
-             },
-     "addKeywords":{
-       "type": "nested",
-       "description": "有效的 Keywords"
-             },
-     "deleteKeywords":{
-       "type": "nested",
-       "description": "無效的 Keywords，即使用者刪除的 Keywords"
-             },
-     "onDate":{
-       "type": "string",
-       "description": "上架日期"
-             },
-     "offDate":{
-       "type": "string",
-       "description": "下架日期"
-               },
-     "availableMode":{
-       "type": "string",
-       "description": "有效碼 0:無效,1:有效"
-             },
-     "publishTime":{
-       "type": "string",
-       "description": "議題發稿日期"
-             }
-     }
--report:
-   {
-     "type": "object",
-     "properties": {
-       "type":{
-         "type": "string",
-         "description": "研報 report",
-         "required": true
-         },
-       "title":{
-         "type": "string",
-         "description": "研報標題"
-             },
-       "subtitle":{
-         "type": "string",
-         "description": "研報子標題"
-             },
-       "summary":{
-         "type": "string",
-         "description": "研報摘要"
-             },
-       "pdfUrl":{
-         "type": "string",
-         "description": "研報 PDf 檔案路徑"
-             },
-       "origin":{
-         "type": "string",
-         "description": "研報來源"
-               },
-       "addRelatedFund":{
-         "type": "array",
-         "description": "新增研報的相關基金代碼"
-               },
-       "deleteRelatedFund":{
-         "type": "array",
-         "description": "刪除研報的相關基金代碼"
-               },
-       "startViews":{
-         "type": "string",
-         "description": "研報增值點閱數"
-               },
-       "addKeywords":{
-         "type": "nested",
-         "description": "有效的 Keywords"
-               },
-       "deleteKeywords":{
-         "type": "nested",
-         "description": "無效的 Keywords，即使用者刪除的 Keywords"
-               },
-       "onDate":{
-         "type": "string",
-         "description": "上架日期"
-               },
-       "offDate":{
-         "type": "string",
-         "description": "下架日期"
-               },
-       "availableMode":{
-         "type": "string",
-         "description": "有效碼 0:無效,1:有效"
-               }
-     }
-</code></pre><p><strong>Example</strong>:</p><pre><code>- theme:
- {
-  "pid":"500",
-  "type":"theme",
-  "origin":"鉅亨網",
-  "title":"近五年原幣報酬率位居亞洲債券型基金組別第一(台灣核備銷售)-貝萊德亞洲老虎債券基金A2美元",
-  "subtitle":"貝萊德亞洲老虎債券基金的表現相對穩定",
-  "summary":"基金績效及風險方面: 在晨星亞洲債券型基金組別中，貝萊德亞洲老虎債券基金的表現相對穩定。受惠於此基金在國家及產業",
-  "content":"亞洲國家在經歷亞洲金融風暴後，經濟體質越見改善；其中，中國近年政府債務佔GDP的比例，低於已開發國家....",
-  "addKeywords":[{"keywordName":"債券基金","score":"1"}],
-  "deleteKeywords":[{"keywordName":"GDP"}],
-  "onDate":"2016-06-23",
-  "offDate":"2016-10-23",
-  "availableMode":"1",
-  "imgUrl":"Theme_8.jpg",
-  "startViews":"100",
-  "publishTime":"2016-06-23"
-  }
-- report:
-  {
-  "pid":"1",
-  "type":"report",
-  "origin":"富蘭克林證券投顧1",
-  "title":"新興債為經理人加碼度最高的債市1",
-  "summary":"英國退歐公投在即，市場普遍抱持觀望態度而不敢躁進，恐慌氣氛更一度使得美國十年期公債殖利率跌破支撐、德國公債降至負利率水準，但美銀美林證券六月例行的全球固定收益型基金經理人調查中顯示，除了新興國家公債加碼度上升外，受訪經理人對美國等多數債市看好度呈現下滑，尤其邊陲歐洲國家公債看多部位更大幅下降，風險趨避心態濃厚，美元則是唯一獲加碼的貨幣。1",
-  "addRelatedFund":["101E","AGEYGB"],
-  "addKeywords":[{"keywordName":"英國","score":"10"},{"keywordName":"股票","score":"1"},{"keywordName":"股債混合","score":"1"},{"keywordName":"產業股票","score":"1"},{"keywordName":"目標期限","score":"1"},{"keywordName":"保證基金","score":"1"},{"keywordName":"美國","score":"9"},{"keywordName":"全球","score":"1"},{"keywordName":"成熟市場","score":"5"},{"keywordName":"新興市場","score":"10"}],
-  "deleteKeywords":[{"keywordName":"GDP"}],
-  "onDate":"2016-06-22",
-  "offDate":"2016-08-04",
-  "availableMode":"1",
-  "startViews":"1001",
-  "pdfUrl":"/fundrich/Report_1.pdf"
-  }
-</code></pre></div><div class="tab-pane" id="articles__articleId__post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
- "message": "Can&#39;t connect to Elasticsearch"
-}
-</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles__articleId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/articles</span>/{articleId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>刪除一筆研報、議題</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles__articleId__delete_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles__articleId__delete_request"><h3>URI Parameters</h3><ul><li><strong>articleId</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>type</strong>: <em>required (string)</em><p>議題 theme, 研報 report</p><p><strong>Example</strong>:</p><pre>report</pre></li></ul></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="popularword" class="panel-title">/popularword</h3></div><div class="panel-body"><div class="top-resource-description"><p>官網自動提示字的靜態檔</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_popularword"><span class="parent"></span>/popularword</a> <span class="methods"><a href="#popularword_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_popularword" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#popularword_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>官網自動提示字的靜態檔</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="popularword_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/popularword</h4></div><div class="modal-body"><div class="alert alert-info"><p>官網自動提示字的靜態檔</p></div><ul class="nav nav-tabs"><li class="active"><a href="#popularword_get_request" data-toggle="tab">Request</a></li><li><a href="#popularword_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="popularword_get_request"><h3>Query Parameters</h3><ul><li><strong>startdate</strong>: <em>(string - default: today - 7day)</em><p>計算的起始日期，預設為前7天</p><p><strong>Example</strong>:</p><pre>2016-10-30</pre></li><li><strong>enddate</strong>: <em>(string - default: today)</em><p>計算的結束日期，預設為今天</p><p><strong>Example</strong>:</p><pre>2016-11-02</pre></li></ul></div><div class="tab-pane" id="popularword_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+}</code></pre><p><strong>report</strong>:<br></p><pre><code>{
+  "pid": "1",
+  "type": "report",
+  "origin": "富蘭克林證券投顧1",
+  "title": "新興債為經理人加碼度最高的債市1",
+  "summary": "英國退歐公投在即，市場普遍抱持觀望態度而不敢躁進，恐慌氣氛更一度使得美國十年期公債殖利率跌破支撐、德國公債降至負利率水準，但美銀美林證券六月例行的全球固定收益型基金經理人調查中顯示，除了新興國家公債加碼度上升外，受訪經理人對美國等多數債市看好度呈現下滑，尤其邊陲歐洲國家公債看多部位更大幅下降，風險趨避心態濃厚，美元則是唯一獲加碼的貨幣。1",
+  "addRelatedFund": [
+    "101EAGEYGB"
+  ],
+  "addKeywords": [
+    {
+      "keywordName": "歐洲",
+      "score": 10
+    }
+  ],
+  "deleteKeywords": [
+    {
+      "keywordName": "英國"
+    },
+    {
+      "keywordName": "成熟市場"
+    }
+  ],
+  "onDate": "2017-06-22",
+  "offDate": "2017-08-04",
+  "availableMode": 1,
+  "startViews": 1001,
+  "pdfUrl": "/fundrich/Report_1.pdf"
+}</code></pre></div></div><div class="tab-pane" id="articles__articleid__post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Could not connect to Elasticsearch Server",
+  "localized_message": "Could not connect to Elasticsearch Server"
+}</code></pre></div></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles__articleid__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/articles</span>/{articleId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>刪除一筆研報、議題</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles__articleid__delete_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles__articleid__delete_request"><h3>URI Parameters</h3><ul><li><strong>articleId</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>type</strong>: <em>required (string)</em><p>議題 theme, 研報 report</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>report</code></pre></div></li></ul></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="popularword" class="panel-title">/popularword</h3></div><div class="panel-body"><div class="top-resource-description"><p>官網自動提示字的靜態檔</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_popularword"><span class="parent"></span>/popularword</a> <span class="methods"><a href="#popularword_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_popularword" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#popularword_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>官網自動提示字的靜態檔</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="popularword_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/popularword</h4></div><div class="modal-body"><div class="alert alert-info"><p>官網自動提示字的靜態檔</p></div><ul class="nav nav-tabs"><li class="active"><a href="#popularword_get_request" data-toggle="tab">Request</a></li><li><a href="#popularword_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="popularword_get_request"><h3>Query Parameters</h3><ul><li><strong>startdate</strong>: <em>required (string - default: today - 7day)</em><p>計算的起始日期，預設為前7天</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>2016-10-30</code></pre></div></li><li><strong>enddate</strong>: <em>required (string - default: today)</em><p>計算的結束日期，預設為今天</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>2016-11-02</code></pre></div></li></ul></div><div class="tab-pane" id="popularword_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "total": 3,
-  "hits":[
-  {
-    "word":"美國",
-    "count":400,
-    "hasFund":100,
-    "hasTheme":50,
-    "hasReport":5
-  },
-  {
-    "word":"總統大選",
-    "count":1100,
-    "hasFund":0,
-    "hasTheme":20,
-    "hasReport":15
-  },
-  {
-    "word":"川普",
-    "count":500,
-    "hasFund":0,
-    "hasTheme":100,
-    "hasReport":25
-  },
+  "hits": [
+    {
+      "word": "美國",
+      "count": 400,
+      "hasFund": 100,
+      "hasTheme": 50,
+      "hasReport": 5
+    },
+    {
+      "word": "總統大選",
+      "count": 1100,
+      "hasFund": 0,
+      "hasTheme": 20,
+      "hasReport": 15
+    },
+    {
+      "word": "川普",
+      "count": 500,
+      "hasFund": 0,
+      "hasTheme": 100,
+      "hasReport": 25
+    }
   ]
-}
-</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
-"message": "Can&#39;t connect to Elasticsearch"
-}
-</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="popularwordcms" class="panel-title">/popularwordcms</h3></div><div class="panel-body"><div class="top-resource-description"><p>CMS 的熱門搜尋字</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_popularwordcms"><span class="parent"></span>/popularwordcms</a> <span class="methods"><a href="#popularwordcms_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_popularwordcms" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#popularwordcms_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>CMS 的熱門搜尋字</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="popularwordcms_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/popularwordcms</h4></div><div class="modal-body"><div class="alert alert-info"><p>CMS 的熱門搜尋字</p></div><ul class="nav nav-tabs"><li class="active"><a href="#popularwordcms_get_request" data-toggle="tab">Request</a></li><li><a href="#popularwordcms_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="popularwordcms_get_request"><h3>Query Parameters</h3><ul><li><strong>source</strong>: <em>(string - default: all)</em><p>熱門字的來源，分為 <code>autocomplete</code>、<code>userkeyin</code>、<code>homepage</code>、<code>article</code> 四種以及全選 <code>all</code> ，預設為 <code>all</code></p><p><strong>Example</strong>:</p><pre>autocomplete</pre></li><li><strong>startdate</strong>: <em>(string - default: today - 7day)</em><p>計算的起始日期，預設為前7天</p><p><strong>Example</strong>:</p><pre>2016-10-30</pre></li><li><strong>enddate</strong>: <em>(string - default: today)</em><p>計算的結束日期，預設為今天</p><p><strong>Example</strong>:</p><pre>2016-11-02</pre></li></ul></div><div class="tab-pane" id="popularwordcms_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+}</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "message": "Could not connect to Elasticsearch Server",
+  "localized_message": "Could not connect to Elasticsearch Server"
+}</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="popularwordcms" class="panel-title">/popularwordcms</h3></div><div class="panel-body"><div class="top-resource-description"><p>CMS 的熱門搜尋字</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_popularwordcms"><span class="parent"></span>/popularwordcms</a> <span class="methods"><a href="#popularwordcms_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_popularwordcms" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#popularwordcms_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>CMS 的熱門搜尋字</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="popularwordcms_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/popularwordcms</h4></div><div class="modal-body"><div class="alert alert-info"><p>CMS 的熱門搜尋字</p></div><ul class="nav nav-tabs"><li class="active"><a href="#popularwordcms_get_request" data-toggle="tab">Request</a></li><li><a href="#popularwordcms_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="popularwordcms_get_request"><h3>Query Parameters</h3><ul><li><strong>source</strong>: <em>required (string - default: all)</em><p>熱門字的來源，分為 <code>autocomplete</code>、<code>userkeyin</code>、<code>homepage</code>、<code>article</code> 四種以及全選 <code>all</code> ，預設為 <code>all</code></p><p><strong>Example</strong>:</p><div class="examples"><pre><code>autocomplete</code></pre></div></li><li><strong>startdate</strong>: <em>required (string - default: today - 7day)</em><p>計算的起始日期，預設為前7天</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>2016-10-30</code></pre></div></li><li><strong>enddate</strong>: <em>required (string - default: today)</em><p>計算的結束日期，預設為今天</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>2016-11-02</code></pre></div></li></ul></div><div class="tab-pane" id="popularwordcms_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "total": 8,
-  "hits":[
-  {
-    "word":"美國",
-    "source":"autocomplete",
-    "count":100,
-    "hasFund":100,
-    "hasTheme":50,
-    "hasReport":5
-  },
-  {
-    "word":"美國",
-    "source":"userkeyin",
-    "count":200,
-    "hasFund":100,
-    "hasTheme":50,
-    "hasReport":5
-  },
-  {
-    "word":"美國",
-    "source":"homepage",
-    "count":300,
-    "hasFund":100,
-    "hasTheme":50,
-    "hasReport":5
-  },
-  {
-    "word":"美國",
-    "source":"article",
-    "count":400,
-    "hasFund":100,
-    "hasTheme":50,
-    "hasReport":5
-  },
-  {
-    "word":"總統大選",
-    "source":"autocomplete",
-    "count":150,
-    "hasFund":0,
-    "hasTheme":20,
-    "hasReport":5
-  },
-  {
-    "word":"總統大選",
-    "source":"userkeyin",
-    "count":10,
-    "hasFund":0,
-    "hasTheme":20,
-    "hasReport":5
-  },
-  {
-    "word":"總統大選",
-    "source":"homepage",
-    "count":1000,
-    "hasFund":0,
-    "hasTheme":20,
-    "hasReport":5
-  },
-  {
-    "word":"總統大選",
-    "source":"article",
-    "count":100,
-    "hasFund":0,
-    "hasTheme":20,
-    "hasReport":5
-  },
+  "hits": [
+    {
+      "word": "美國",
+      "source": "autocomplete",
+      "count": 100,
+      "hasFund": 100,
+      "hasTheme": 50,
+      "hasReport": 5
+    },
+    {
+      "word": "美國",
+      "source": "userkeyin",
+      "count": 200,
+      "hasFund": 100,
+      "hasTheme": 50,
+      "hasReport": 5
+    },
+    {
+      "word": "美國",
+      "source": "homepage",
+      "count": 300,
+      "hasFund": 100,
+      "hasTheme": 50,
+      "hasReport": 5
+    },
+    {
+      "word": "美國",
+      "source": "article",
+      "count": 400,
+      "hasFund": 100,
+      "hasTheme": 50,
+      "hasReport": 5
+    },
+    {
+      "word": "總統大選",
+      "source": "autocomplete",
+      "count": 150,
+      "hasFund": 0,
+      "hasTheme": 20,
+      "hasReport": 5
+    },
+    {
+      "word": "總統大選",
+      "source": "userkeyin",
+      "count": 10,
+      "hasFund": 0,
+      "hasTheme": 20,
+      "hasReport": 5
+    },
+    {
+      "word": "總統大選",
+      "source": "homepage",
+      "count": 1000,
+      "hasFund": 0,
+      "hasTheme": 20,
+      "hasReport": 5
+    },
+    {
+      "word": "總統大選",
+      "source": "article",
+      "count": 100,
+      "hasFund": 0,
+      "hasTheme": 20,
+      "hasReport": 5
+    }
   ]
-}
-</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#articles">/articles</a></li><li><a href="#popularword">/popularword</a></li><li><a href="#popularwordcms">/popularwordcms</a></li></ul></div></div></div></div></body></html>
+}</code></pre></div></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#articles">/articles</a></li><li><a href="#popularword">/popularword</a></li><li><a href="#popularwordcms">/popularwordcms</a></li></ul></div></div></div></div></body></html>
