@@ -1,0 +1,858 @@
+#%RAML 1.0
+title: fundrich
+version: v1
+baseUri: http://172.18.20.60:5378/fundrich_api/{version}
+securitySchemes:
+  basic:
+    description: |
+      POST Action supports Basic Authentication.
+    type: Basic Authentication
+
+types:
+  addKeywords:
+    type: object
+    properties:
+      keywordName:
+        type: string
+        description: 關鍵字
+      score:
+        type: integer
+        description: 分數
+  deleteKeywords:
+      type: object
+      properties:
+        keywordName:
+         type: string
+         description: 關鍵字
+
+  ReportInput:
+    type: object
+    properties:
+      pid:
+        type: string
+        description: 研報 ID
+        required: false
+      type:
+        type: string
+        description: report
+      title:
+        type: string
+        description: 標題
+      subtitle:
+        type: string
+        description: 子標題
+        required: false
+      summary:
+        type: string
+        description: 摘要
+      pdfUrl:
+        type: string
+        description: 研報PDF檔案路徑
+        required: false
+      origin:
+        type: string
+        description: 研報來源
+      addRelatedFund:
+        type: array
+        description: 新增研報的相關基金代碼
+        required: false
+      deleteRelatedFund:
+        type: array
+        description: 刪除研報的相關基金代碼
+        required: false
+      startViews:
+        type: integer
+        description: 增值點閱數
+      onDate:
+        type: string
+        description: 上架日期
+      offDate:
+        type: string
+        description: 下架日期
+      availableMode:
+        type: integer
+        description: 有效碼 0:無效,1:有效
+      addKeywords:
+        type: addKeywords[]
+        description: 有效的 Keywords
+        required: false
+      deleteKeywords:
+        type: deleteKeywords[]
+        description: 無效的 Keywords，即使用者刪除的 Keywords
+        required: false
+  ThemeInput:
+    type: object
+    properties:
+      pid:
+        type: string
+        description: 議題ID
+        required: false
+      type:
+        type: string
+        description: theme
+      title:
+        type: string
+        description: 標題
+      subtitle:
+        type: string
+        description: 子標題
+        required: false
+      summary:
+        type: string
+        description: 摘要
+      content:
+        type: string
+        description: 內文
+      imgUrl:
+        type: string
+        description: 議題圖片路徑
+      origin:
+        type: string
+        description: 議題來源/作者
+      startViews:
+        type: integer
+        description: 增值點閱數
+      onDate:
+        type: string
+        description: 上架日期
+      offDate:
+        type: string
+        description: 下架日期
+      availableMode:
+        type: integer
+        description: 有效碼 0:無效,1:有效
+      publishTime:
+        type: string
+        description: 議題發稿日期
+        required: false
+      addKeywords:
+        type: addKeywords[]
+        description: 有效的 Keywords
+        required: false
+      deleteKeywords:
+        type: deleteKeywords[]
+        description: 無效的 Keywords，即使用者刪除的 Keywords
+        required: false
+
+  ThemeOrReportInput:
+      type: ThemeInput | ReportInput
+
+  ReportOutput:
+      type: object
+      properties:
+        pid:
+          type: string
+          description: 研報 ID
+          required: false
+        found:
+          type: boolean
+          description: 是否搜尋到
+        title:
+          type: string
+          description: 標題
+        subtitle:
+          type: string
+          description: 子標題
+          required: false
+        summary:
+          type: string
+          description: 摘要
+        pdfUrl:
+          type: string
+          description: 研報PDF檔案路徑
+          required: false
+        origin:
+          type: string
+          description: 研報來源
+        relatedFund:
+          type: array
+          description: 相關基金代碼
+          required: false
+        relatedFundName:
+          type: array
+          description: 相關基金名稱
+          required: false
+        startViews:
+          type: integer
+          description: 增值點閱數
+        onDate:
+          type: string
+          description: 上架日期
+        offDate:
+          type: string
+          description: 下架日期
+        availableMode:
+          type: integer
+          description: 有效碼 0:無效,1:有效
+        keywords:
+          type: array
+          description: keywords
+          required: false
+
+  ThemeOutput:
+    type: object
+    properties:
+      pid:
+        type: string
+        description: 議題ID
+        required: false
+      found:
+        type: boolean
+        description: 是否搜尋到
+      title:
+        type: string
+        description: 標題
+      subtitle:
+        type: string
+        description: 子標題
+        required: false
+      summary:
+        type: string
+        description: 摘要
+      content:
+        type: string
+        description: 內文
+      imgUrl:
+        type: string
+        description: 議題圖片路徑
+        required: false
+      origin:
+        type: string
+        description: 議題來源/作者
+      startViews:
+        type: integer
+        description: 增值點閱數
+      onDate:
+        type: string
+        description: 上架日期
+      offDate:
+        type: string
+        description: 下架日期
+      availableMode:
+        type: integer
+        description: 有效碼 0:無效,1:有效
+      publishTime:
+        type: string
+        description: 議題發稿日期
+        required: false
+      keywords:
+        type: array
+        description: 有效的 Keywords
+        required: false
+
+
+/articles:
+  description: 官網 全文搜尋 與 CMS 新增/更新研報、議題
+  get:
+    description: 不指定 `Type` (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table
+    queryParameters:
+      keyword:
+        displayName: keyword
+        type: string
+        description: 搜尋字詞
+        example: 美國
+        required: true
+      startindex:
+        displayName: startindex
+        type: integer
+        description: start index in ES table
+        example: 1
+        required: true
+        default: 0
+      offset:
+        displayName: offset
+        type: integer
+        description: 每個 Type 回傳的筆數
+        example: 1
+        required: true
+        default: 10
+      sort:
+        displayName: sort
+        type: string
+        description: 排序欄位 `clickcnt` 點擊數, `time` 日期, `relevance` 相關性
+        example: time
+        default: relevance
+      order:
+        displayName: order
+        type: string
+        description: 排序方式 `asc` 遞增, `desc` 遞減
+        example: desc
+        default: desc
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "total": 3,
+                "hits":{
+                  "fund":[
+                    {
+                      "pid": "018002",
+                      "score": 0.10626807,
+                      "title": "瑞銀 (盧森堡) 美國增長股票基金(美元)",
+                      "titleEng": "UBS (LUX) ES USA GROWTH $ P ACC",
+                      "starRating": null,
+                      "riskRating": 4,
+                      "createTime": "2017-05-25T00:53:58",
+                      "views": 47
+                    }
+                  ],
+                  "theme":[
+                  {
+                    "pid": "2453",
+                    "score": 0.024497706,
+                    "title": "從聯合利華看優質企業的投資優勢",
+                    "summary": "聯合利華，一家跨國型的消費品龍頭企業，總部遠在荷蘭和倫敦，或許因此您對聯合利華的認識並不深，但是生活周遭家喻戶曉的品牌卻充滿它的影子。這家產業龍頭擅長於多品牌的經營模式，旗下具有400多個知名品牌，營運觸角遍及全球，尤其以新興市場為它的主要獲利來源。\r<br/>\r<br/>甫自1880年創業以來，聯合利華的營業宗旨就在於打造更美好的未來，該公司持續透過了解消費者終端需求，不斷致力於研發新產品。目前全球每天有高達20億人在使用聯合利華的產品，品牌價值造就消費者忠誠，由需求出發的經營模式，使這家企業長年位於產業龍頭地位不墜，並深植於日常生活模式中具有無可取代的市場地位。",
+                    "imgUrl": "Theme_2453_20170418103347.gif",
+                    "createTime": "2017-04-17T00:00:00",
+                    "views": 45
+                  }
+                ],
+                "report":[
+                  {
+                    "pid": "168",
+                    "score": 0.6565784,
+                    "title": "2017年美國REITs擁三亮點",
+                    "pdfUrl": "Report_168.pdf",
+                    "summary": "",
+                    "createTime": "2016-12-22T00:00:00",
+                    "views": 39
+                  }
+                ]
+              }
+              }
+      400:
+        body:
+          application/json:
+            example: |
+              {
+                "message":"Could not connect to Elasticsearch Server,
+                "localized_message":"Could not connect to Elasticsearch Server"
+              }
+  post:
+    description: 新增一筆研報、議題
+    securedBy: [basic]
+    body:
+      application/json:
+        type: ThemeOrReportInput
+        examples:
+          theme:
+            pid: "500"
+            type: theme
+            origin: 鉅亨網
+            title: 近五年原幣報酬率位居亞洲債券型基金組別第一(台灣核備銷售)-貝萊德亞洲老虎債券基金A2美元
+            subtitle: 貝萊德亞洲老虎債券基金的表現相對穩定
+            summary: 基金績效及風險方面 在晨星亞洲債券型基金組別中，貝萊德亞洲老虎債券基金的表現相對穩定。受惠於此基金在國家及產業
+            content: 亞洲國家在經歷亞洲金融風暴後，經濟體質越見改善；其中，中國近年政府債務佔GDP的比例，低於已開發國家
+            onDate: 2016-06-23
+            offDate: 2016-10-23
+            availableMode: 1
+            imgUrl: Theme_8jpg
+            startViews: 100
+            publishTime: 2016-06-23
+            addKeywords:
+              - # start item 1
+                keywordName: 債券基金
+                score: 1
+          report:
+            pid: "1"
+            type: report
+            origin: 富蘭克林證券投顧1
+            title: 新興債為經理人加碼度最高的債市1
+            summary: 英國退歐公投在即，市場普遍抱持觀望態度而不敢躁進，恐慌氣氛更一度使得美國十年期公債殖利率跌破支撐、德國公債降至負利率水準，但美銀美林證券六月例行的全球固定收益型基金經理人調查中顯示，除了新興國家公債加碼度上升外，受訪經理人對美國等多數債市看好度呈現下滑，尤其邊陲歐洲國家公債看多部位更大幅下降，風險趨避心態濃厚，美元則是唯一獲加碼的貨幣。1
+            addRelatedFund: ["002010","002018"]
+            addKeywords:
+              - # start item 1
+                keywordName: 英國
+                score: 10
+              -
+                keywordName: 股票
+                score: 1
+              -
+                keywordName: 股債混合
+                score: 1
+              -
+                keywordName: 產業股票
+                score: 1
+              -
+                keywordName: 目標期限
+                score: 1
+              -
+                keywordName: 保證基金
+                score: 1
+              -
+                keywordName: 美國
+                score: 9
+              -
+                keywordName: 全球
+                score: 1
+              -
+                keywordName: 成熟市場
+                score: 5
+              -
+                keywordName: 新興市場
+                score: 0
+            onDate: 2016-06-22
+            offDate: 2016-08-04
+            availableMode: 1
+            startViews: 1001
+            pdfUrl: /fundrich/Report_1.pdf
+
+    responses:
+      201:
+        body:
+          application/json:
+      400:
+        body:
+          application/json:
+            example:
+              message: "[report][3]: document already exists"
+              localized_message: "[report][3]: document already exists"
+
+  /types/{type}:
+    uriParameters:
+      type:
+        type: string
+        description: 議題 theme, 基金 fund, 研報 report
+    get:
+      description: 不指定 `Type` (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table
+      queryParameters:
+        keyword:
+          displayName: keyword
+          type: string
+          description: 搜尋字詞
+          example: 美國
+          required: true
+        startindex:
+          displayName: startindex
+          type: integer
+          description: start index in ES table
+          example: 1
+          required: true
+          default: 0
+        offset:
+          displayName: offset
+          type: integer
+          description: 回傳的筆數
+          example: 2
+          required: true
+          default: 10
+        sort:
+          displayName: sort
+          type: string
+          description: 排序欄位 `clickcnt` 點擊數, `time` 日期, `relevance` 相關性
+          example: time
+          default: relevance
+        order:
+          displayName: order
+          type: string
+          description: 排序方式 `asc` 遞增, `desc` 遞減
+          example: desc
+          default: desc
+
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "total": 2,
+                  "hits":[
+                    {
+                      "pid": "018002",
+                      "score": 0.10626807,
+                      "title": "瑞銀 (盧森堡) 美國增長股票基金(美元)",
+                      "titleEng": "UBS (LUX) ES USA GROWTH $ P ACC",
+                      "starRating": null,
+                      "riskRating": 4,
+                      "createTime": "2017-05-25T00:53:58",
+                      "views": 47
+                    },
+                    {
+                      "pid": "018035",
+                      "score": 0.088416204,
+                      "title": "瑞銀 (盧森堡) 美國小型股票基金(美元)",
+                      "titleEng": "UBS (LUX) EF SMALL CAPS USA (USD) P",
+                      "starRating": null,
+                      "riskRating": 4,
+                      "createTime": "2017-05-25T00:53:59",
+                      "views": 185
+                    }
+                  ]
+                }
+        400:
+          body:
+            application/json:
+              example:
+                {
+                  "message": "Put Column Value Error : Could not connect to Elasticsearch Server",
+                  "localized_message": "Put Column Value Error : Could not connect to Elasticsearch Server"
+                }
+  /{articleId}:
+    get:
+      description: 根據 `articleId`，取得基金、議題、研報的資訊
+      queryParameters:
+        type:
+          displayName: type
+          type: string
+          description: 基金 fund, 議題 theme, 研報 report
+          example: report
+          required: true
+      responses:
+          200:
+            body:
+              application/json:
+                examples:
+                  fund:
+                    {
+                      "found": true,
+                      "pid": "042011",
+                      "title": "貝萊德新興市場債券基金 A3 美元",
+                      "titleEng": "BGF EMERGING MARKETS BOND A3",
+                      "investmentStrategy": "新興市場債券基金以盡量提高總回報為目標.基金將不少於70%的總資產投資於新興市場的政府和機構或在當地註冊或從事大部份經濟活動的公司的定息可轉讓證券.基金可投資於全線可供選擇的證券,包括非投資級證券.貨幣風險將靈活管理.",
+                      "investmentStrategyEng": "The Emerging Markets Bond Fund seeks to maximise total return.The Fund invests at least 70%of its total assets in the fixed income transferable securities of governments and agencies of,and companies domiciled or exercising the predominant part of their economic activity in,emerging markets.The Fund may invest in the full spectrum of available securities,including non-investment grade.Currency exposure is flexibly managed.",
+                      "stock": [
+                          "TREASURY BOND 2.875 05/15/2043",
+                          "BGF EM Corporate Bond Fund X2 USD",
+                          "PANAMA (REPUBLIC OF) 4 09/22/2024",
+                          "URUGUAY (ORIENTAL REPUBLIC OF) 5.1 06/18/2050",
+                          "SERBIA REPUBLIC OF (GOVERNMENT) RegS 4.875 02/25/2020",
+                          "1MDB GLOBAL INVESTMENTS LTD 4.4 03/09/2023",
+                          "ANGOLA (REPUBLIC OF) RegS 9.5 11/12/2025",
+                          "SINOPEC GROUP OVERSEAS DEVELOPMENT RegS 3.25 04/28/2025",
+                          "IRAQ (REPUBLIC OF) RegS 5.8 01/15/2028",
+                          "RUSSIAN FEDERATION RegS 4.75 05/27/2026"
+                      ],
+                      "cat": "新興市場債券",
+                      "catEng": "Global Emerging Markets Bond",
+                      "broadCat": "債券基金",
+                      "broadCatEng": "Fixed Income",
+                      "currencyCode": "USD",
+                      "createTime": "2017-03-19T23:26:42",
+                      "dbUpdateTime": "2017-03-20T00:15:07.570",
+                      "location": "盧森堡",
+                      "locationEng": "Luxembourg",
+                      "areaName": "全球新興市場",
+                      "areaNameEng": "Global Emerging Mkts",
+                      "origin": "貝萊德證券投資信託股份有限公司",
+                      "originEng": "BlackRock Investment Mngt (Taiwan) Ltd",
+                      "originAsset": "貝萊德(盧森堡)公司",
+                      "originAssetEng": "BlackRock (Luxembourg) SA",
+                      "riskRating": 3,
+                      "sumViews": 0,
+                      "userUpdateTime": "2017-03-19T23:26:42",
+                      "availableMode": 1
+                    }
+                  theme:
+                    {
+                      "found": true,
+                      "pid": "2072",
+                      "title": "掌握資金潮，投資『金、高、興』(FR勿刪)",
+                      "content": "<iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/YW2S00oP5ck?rel=0\" frameborder=\"0\" allowfullscreen=\"\"></iframe><p><span id=\"_xhe_cursor\"><br /></span></p><iframe width=\"595\" height=\"485\" src=\"//www.slideshare.net/slideshow/embed_code/key/uscfU7yadz2qfq\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" allowfullscreen=\"\" style=\"border: 1px solid rgb(204, 204, 204); border-image: none; margin-bottom: 5px; max-width: 100%;\"> </iframe> <div style=\"margin-bottom: 5px;\"> <strong> <a title=\"M212(富蘭克林)\" href=\"//www.slideshare.net/KarenWu29/m212\" target=\"_blank\">M212(富蘭克林)</a> </strong> from <strong><a href=\"//www.slideshare.net/KarenWu29\" target=\"_blank\">Karen Wu</a></strong> </div>",
+                      "origin": "富蘭克林投顧(2016/8/17)",
+                      "summary": "因應全球溫和成長與英國退歐衝擊，預期聯準會將維持鴿派，其他主要央行可能再擴大寬鬆政策，這股資金潮至少將延續至2017年，營造股市大漲小回的多頭行情。建議投資人掌握資金脈動，鎖定「黃金、高息資產、新興市場(產業)」三大趨勢，輕鬆搭乘資金行情列車。",
+                      "offDate": "2017-08-01T00:00:00",
+                      "onDate": "2016-11-01T00:00:00",
+                      "userUpdateTime": "2017-03-15T18:25:59.763",
+                      "createTime": "2016-08-17T00:00:00",
+                      "availableMode": 1,
+                      "keywords": [
+                        "天然資源",
+                        "生技",
+                        "行動科技",
+                        "高息資產",
+                        "富蘭克林",
+                        "富蘭克林坦伯頓天然資源基金",
+                        "富蘭克林坦伯頓新興國家小型企業基金",
+                        "富蘭克林黃金基金",
+                        "聯準會鴿派"
+                      ],
+                      "imgUrl": "Theme_2072.jpg",
+                      "dbUpdateTime": "2017-03-20T01:15:06.407",
+                      "publishTime": "2016-08-17T00:00:00",
+                      "startViews": 0,
+                      "sumViews": 74,
+                      "views": 74
+                    }
+                  report:
+                    {
+                      "found": true,
+                      "pid": "1888",
+                      "title": "新興債為經理人加碼度最高的債市",
+                      "content": "B L A C K R O C KB U L L E T I N\nV I E W SF R O MO U RS T R A T E G I S T SA N DP O R T F O L I OT E A M S\n英國公投決定脫歐預計將為英國與歐盟帶來長時間政治經濟和市場\n的不確定性\n我們預期全球風險性資產將面臨拋售潮同時也帶來逢低買進的機會\n公投結果不會改變貝萊德對客戶的歐洲資產管理也不會影響我們資產\n管理的方式\n英國公投決定離開歐盟將帶來長期政經上的影響我們預期歐洲領導人得花\n更多心力去抑制國內因英國脫歐而觸發的民粹運動同時還要防止歐盟垮台\n這意指英國將處於嚴峻的談判立場而歐盟將減少關注更加必需的結構性改\n革我們預期英國對移民的態度將更強硬未來恐有長期處於孤立的風險為\n歐洲增加更多不確定性\n卡麥隆David Cameron已宣布他將於今年十月前辭去英國首相脫歐派的\n支持者很可能會主導今年夏天的保守黨黨魁選舉這增加了不確定性以及在脫\n歐協商上的情緒性反應另外蘇格蘭可能再次舉行獨立公投\n我們預期英國脫歐將造成市場混亂過程冗長又代價高昂脫歐之後英國與\n歐盟的法令分離暫停與歐盟及其他國家的貿易協定我們預期出口服務及資\n金流所面臨的潛在損失將大於支付給歐盟較少費用的好處\n歐洲或將處於失業率上升與經濟成長率低迷的困境導致歐元歐股歐洲信\n貸與歐洲周邊國家債券長期走弱如義大利公債另一方面我們預期政府所\n面臨的財政壓力有限因為在低利率的環境下高品質的政府債券需求仍然持\n續\n英國央行的首要任務是提供足夠的流動性以避免融資壓力英鎊貶值幅度與波\n動性可能迫使央行作出應對措施我們認為英國央行可能很快就會調降現行\n的利率至零利率並重返量化寬鬆而非馬上施行負利率我們預期信\n評機構將立即調整英國公債至負面展望並隨後調降評等\n預期此公投結果將引發全球股票和其他風險資產下跌然而拋售潮也會產生投\n資機會美國和亞洲市場所受到的波及有限且受惠於寬鬆貨幣政策和較強勁\n的經濟成長英國方面我們認為大型股FTSE100指數的表現會比著重在內需\n市場的FTSE250指數好英鎊下跌對於營收來自海外的大型企業來說反而是利\n多然而以內需為主的營建零售和金融等產業則較易受到衝擊\n在未來一年商業大樓的價值可能因倫敦中心供給過度而減少約我們認\n為承租需求會大幅下降且短期租約比例將變多海外投資人對於英國資產勢\n必要求更多的風險溢酬然而大部分開發商的融資期間較為長期所以因為\n債務所驅使的賣壓風險會較輕微\n英國公投結果脫歐\nJune\nWHY BLACKROCK\nBlackRock helps people around the worldas well as the worlds largest\ninstitutions and governmentspursue their investing goalsWe offer\nA comprehensive set of innovative solutions\nGlobal market and investment insights\nSophisticated risk and portfolio analytics\n貝萊德證券投資信託股份有限公司獨立經營管理台北市敦化南路二段95號28樓電話0223261600本檔僅作參考資料和教育\n用途在招攬或向任何人士分發屬違法的任何司法管轄區本檔並不構成與任何證券或貝萊德基金有關的招攬此外亦不構成與\n本檔收件人簽訂投資協定的要約或透過提出簽訂投資協定的要約邀請收件人作出回應\n本檔可能含有前瞻性資訊這些資訊可能包括預測預報收益或回報估計及可能的投資組合構成此外本文包括其他投資\n工具或貝萊德所管理的綜合帳戶之若干過往表現資料該等表現資料僅作為舉例用途概無聲明表示任何貝萊德基金將會取得所示\n的表現或已考慮或列出擬備本檔期間就取得計算或呈列前瞻性資料或往績資料時所作的各項假設若擬備本檔期間所作的假設\n出現任何轉變可能會對作為舉例用途的所示投資回報構成重大的影響\n本檔並不構成對未來事件的預估研究或投資建議也不應該被視為購買出售任何證券或採用任何投資策略的建議本文件所載\n的任何意見反映本公司截至2016年6月24日的判斷可因其後的條件轉變而作出變動本檔所載的資訊及意見取自貝萊德認為\n可靠的專有和非專有來源並不一定涵蓋所有資料亦不保證其準確性概不保證所作的任何預測將會實現貝萊德所管理的帳戶\n並不一定持有本檔所述的任何投資項目是否依賴本檔所載的資訊由閣下自行決定有關觀點不一定反映貝萊德集團旗下任何公司\n的全部或部分意見且不保證其準確性\n本檔僅載有一般資訊並不代表一般或特定的投資建議所載資料並無考慮閣下的財務狀況閣下應就個人的目標財政狀況及需\n要評估有關資訊對閣下來說是否合適\n過往的表現對未來的業績並不具指示作用投資價值及其收益可能升跌概不作出保證閣下可能無法取回原本的投資金額匯率\n變動或會導致投資價值反復波動\n本文件屬高度機密不得複製或分發予收件人以外的其他人士BLK2016231\n2016 貝萊德集團版權所有任何其他商標歸屬於其各自的所有人\nWant to know more\nblackrockcom\n為什麼選擇貝萊德\n貝萊德協助全世界的投資人達到投資目標包含全球大型機構法人及政府機關\n我們提供\n整合性的創新解決方案\n全球市場投資洞見\n專業的風險管理與投資組合分析\n想了解更多\nblackr tw",
+                      "origin": "富蘭克林證券投顧",
+                      "summary": "英國退歐公投在即，市場普遍抱持觀望態度而不敢躁進，恐慌氣氛更一度使得美國十年期公債殖利率跌破支撐、德國公債降至負利率水準，但美銀美林證券六月例行的全球固定收益型基金經理人調查中顯示，除了新興國家公債加碼度上升外，受訪經理人對美國等多數債市看好度呈現下滑，尤其邊陲歐洲國家公債看多部位更大幅下降，風險趨避心態濃厚，美元則是唯一獲加碼的貨幣。1",
+                      "offDate": "2018-08-04T00:00:00",
+                      "onDate": "2017-01-22T00:00:00",
+                      "userUpdateTime": "2017-03-21T16:21:30",
+                      "createTime": "2017-03-21T15:50:45",
+                      "availableMode": 1,
+                      "keywords": [
+                        "股債混合",
+                        "保證基金",
+                        "全球",
+                        "美國",
+                        "股票",
+                        "目標期限",
+                        "新興市場",
+                        "產業股票",
+                        "成熟市場",
+                        "英國"
+                      ],
+                      "pdfMetadataKeywords": [
+                        "英國公投結果",
+                        "脫歐",
+                        "貝萊德"
+                      ],
+                      "pdfUrl": "/BLR_市場報告.pdf",
+                      "relatedFund": [
+                        "002010",
+                        "002018"
+                      ],
+                      "relatedFundName": [
+                        "柏瑞環球基金-柏瑞歐洲股票基金 A",
+                        "柏瑞環球基金-柏瑞環球新興市場債券基金 AD"
+                      ],
+                      "startViews": 1001,
+                      "sumViews": 1001
+                    }
+          400:
+              body:
+                application/json:
+                  example:
+                    {
+                      "message": "Could not connect to Elasticsearch Server",
+                      "localized_message": "Could not connect to Elasticsearch Server"
+                    }
+    post:
+      securedBy: [basic]
+      description: 更新議題、研報的資訊(標題、內容、作者、關鍵字列表...)`addKeywords` 為有效的 Keywords，`deleteKeywords`為無效的 Keywords(即刪除keywords操作)，Update ariticle information with `articleId = {articleId}`
+      body:
+        application/json:
+          type: [ReportInput | ThemeInput]
+          examples:
+            theme:
+              pid: "500"
+              type: theme
+              origin: 鉅亨網
+              title: 近五年原幣報酬率位居亞洲債券型基金組別第一(台灣核備銷售)-貝萊德亞洲老虎債券基金A2美元
+              subtitle: 貝萊德亞洲老虎債券基金的表現相對穩定
+              summary: 基金績效及風險方面 在晨星亞洲債券型基金組別中，貝萊德亞洲老虎債券基金的表現相對穩定。受惠於此基金在國家及產業
+              content: 亞洲國家在經歷亞洲金融風暴後，經濟體質越見改善；其中，中國近年政府債務佔GDP的比例，低於已開發國家
+              onDate: 2016-06-23
+              offDate: 2016-10-23
+              availableMode: 1
+              imgUrl: Theme_8jpg
+              startViews: 100
+              publishTime: 2016-06-23
+              addKeywords:
+                - # start item 1
+                  keywordName: GDP
+                  score: 1
+              deleteKeywords:
+                - # start item 1
+                  keywordName: 債券基金
+            report:
+              pid: "1"
+              type: report
+              origin: 富蘭克林證券投顧1
+              title: 新興債為經理人加碼度最高的債市1
+              summary: 英國退歐公投在即，市場普遍抱持觀望態度而不敢躁進，恐慌氣氛更一度使得美國十年期公債殖利率跌破支撐、德國公債降至負利率水準，但美銀美林證券六月例行的全球固定收益型基金經理人調查中顯示，除了新興國家公債加碼度上升外，受訪經理人對美國等多數債市看好度呈現下滑，尤其邊陲歐洲國家公債看多部位更大幅下降，風險趨避心態濃厚，美元則是唯一獲加碼的貨幣。1
+              addRelatedFund: [101EAGEYGB]
+              addKeywords:
+                - # start item 1
+                  keywordName: 歐洲
+                  score: 10
+
+              deleteKeywords:
+                -
+                  keywordName: 英國
+                -
+                  keywordName: 成熟市場
+              onDate: 2017-06-22
+              offDate: 2017-08-04
+              availableMode: 1
+              startViews: 1001
+              pdfUrl: /fundrich/Report_1.pdf
+
+      responses:
+        200:
+          body:
+            application/json:
+        400:
+            body:
+              application/json:
+                example:
+                  {
+                    "message": "Could not connect to Elasticsearch Server",
+                    "localized_message": "Could not connect to Elasticsearch Server"
+                  }
+
+    delete:
+      description: 刪除一筆研報、議題
+      queryParameters:
+        type:
+          displayName: type
+          type: string
+          description: 議題 theme, 研報 report
+          example: report
+          required: true
+
+
+
+
+/popularword:
+  description: 官網自動提示字的靜態檔
+  get:
+    description: 官網自動提示字的靜態檔
+    queryParameters:
+      startdate:
+        displayName: startdate
+        type: string
+        description: 計算的起始日期，預設為前7天
+        example: "2016-10-30"
+        default: today - 7day
+      enddate:
+        displayName: enddate
+        type: string
+        description: 計算的結束日期，預設為今天
+        example: "2016-11-02"
+        default: today
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "total": 3,
+                "hits":[
+                {
+                  "word":"美國",
+                  "count":400,
+                  "hasFund":100,
+                  "hasTheme":50,
+                  "hasReport":5
+                },
+                {
+                  "word":"總統大選",
+                  "count":1100,
+                  "hasFund":0,
+                  "hasTheme":20,
+                  "hasReport":15
+                },
+                {
+                  "word":"川普",
+                  "count":500,
+                  "hasFund":0,
+                  "hasTheme":100,
+                  "hasReport":25
+                },
+                ]
+              }
+      400:
+        body:
+          application/json:
+            example:
+              {
+                "message": "Could not connect to Elasticsearch Server",
+                "localized_message": "Could not connect to Elasticsearch Server"
+              }
+
+/popularwordcms:
+  description: CMS 的熱門搜尋字
+  get:
+    description: CMS 的熱門搜尋字
+    queryParameters:
+      source:
+        displayName: source
+        description: 熱門字的來源，分為 `autocomplete`、`userkeyin`、`homepage`、`article` 四種以及全選 `all` ，預設為 `all`
+        example: "autocomplete"
+        default: all
+      startdate:
+        displayName: startdate
+        type: string
+        description: 計算的起始日期，預設為前7天
+        example: "2016-10-30"
+        default: today - 7day
+      enddate:
+        displayName: enddate
+        type: string
+        description: 計算的結束日期，預設為今天
+        example: "2016-11-02"
+        default: today
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "total": 8,
+                "hits":[
+                {
+                  "word":"美國",
+                  "source":"autocomplete",
+                  "count":100,
+                  "hasFund":100,
+                  "hasTheme":50,
+                  "hasReport":5
+                },
+                {
+                  "word":"美國",
+                  "source":"userkeyin",
+                  "count":200,
+                  "hasFund":100,
+                  "hasTheme":50,
+                  "hasReport":5
+                },
+                {
+                  "word":"美國",
+                  "source":"homepage",
+                  "count":300,
+                  "hasFund":100,
+                  "hasTheme":50,
+                  "hasReport":5
+                },
+                {
+                  "word":"美國",
+                  "source":"article",
+                  "count":400,
+                  "hasFund":100,
+                  "hasTheme":50,
+                  "hasReport":5
+                },
+                {
+                  "word":"總統大選",
+                  "source":"autocomplete",
+                  "count":150,
+                  "hasFund":0,
+                  "hasTheme":20,
+                  "hasReport":5
+                },
+                {
+                  "word":"總統大選",
+                  "source":"userkeyin",
+                  "count":10,
+                  "hasFund":0,
+                  "hasTheme":20,
+                  "hasReport":5
+                },
+                {
+                  "word":"總統大選",
+                  "source":"homepage",
+                  "count":1000,
+                  "hasFund":0,
+                  "hasTheme":20,
+                  "hasReport":5
+                },
+                {
+                  "word":"總統大選",
+                  "source":"article",
+                  "count":100,
+                  "hasFund":0,
+                  "hasTheme":20,
+                  "hasReport":5
+                },
+                ]
+              }

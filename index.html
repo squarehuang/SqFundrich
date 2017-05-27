@@ -166,55 +166,41 @@
       .resource-modal li > ul {
         margin-bottom: 1em;
       }
-    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>fundrich API documentation <small>version v1</small></h1><p>http://172.18.20.60:5378/fundrich_api/{version}</p><ul><li><strong>version</strong>: <em>required (v1)</em></li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="articles" class="panel-title">/articles</h3></div><div class="panel-body"><div class="top-resource-description"><p>官網 全文搜尋 與 CMS 新增/更新研報、議題</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_articles"><span class="parent"></span>/articles</a> <span class="methods"><a href="#articles_get"><span class="badge badge_get">get</span></a> <a href="#articles_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_articles" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#articles_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#articles_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>新增一筆研報、議題</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/articles</h4></div><div class="modal-body"><div class="alert alert-info"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles_get_request" data-toggle="tab">Request</a></li><li><a href="#articles_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles_get_request"><h3>Query Parameters</h3><ul><li><strong>keyword</strong>: <em>required (string)</em><p>搜尋字詞</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>英國</code></pre></div></li><li><strong>startindex</strong>: <em>required (integer - default: 0)</em><p>start index in ES table</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>1</code></pre></div></li><li><strong>offset</strong>: <em>required (integer - default: 10)</em><p>每個 Type 回傳的筆數</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>2</code></pre></div></li><li><strong>sort</strong>: <em>required (string - default: relevance)</em><p>排序欄位 <code>clickcnt</code> 點擊數, <code>time</code> 日期, <code>relevance</code> 相關性</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>time</code></pre></div></li><li><strong>order</strong>: <em>required (string - default: desc)</em><p>排序方式 <code>asc</code> 遞增, <code>desc</code> 遞減</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>desc</code></pre></div></li></ul></div><div class="tab-pane" id="articles_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
-  "total": 6,
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>fundrich API documentation <small>version v1</small></h1><p>http://172.18.20.60:5378/fundrich_api/{version}</p><ul><li><strong>version</strong>: <em>required (v1)</em></li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="articles" class="panel-title">/articles</h3></div><div class="panel-body"><div class="top-resource-description"><p>官網 全文搜尋 與 CMS 新增/更新研報、議題</p></div><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_articles"><span class="parent"></span>/articles</a> <span class="methods"><a href="#articles_get"><span class="badge badge_get">get</span></a> <a href="#articles_post"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span></a></span></h4></div><div id="panel_articles" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#articles_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#articles_post'" class="list-group-item"><span class="badge badge_post">post <span class="glyphicon glyphicon-lock" title="Authentication required"></span></span><div class="method_description"><p>新增一筆研報、議題</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/articles</h4></div><div class="modal-body"><div class="alert alert-info"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles_get_request" data-toggle="tab">Request</a></li><li><a href="#articles_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles_get_request"><h3>Query Parameters</h3><ul><li><strong>keyword</strong>: <em>required (string)</em><p>搜尋字詞</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>美國</code></pre></div></li><li><strong>startindex</strong>: <em>required (integer - default: 0)</em><p>start index in ES table</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>1</code></pre></div></li><li><strong>offset</strong>: <em>required (integer - default: 10)</em><p>每個 Type 回傳的筆數</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>1</code></pre></div></li><li><strong>sort</strong>: <em>required (string - default: relevance)</em><p>排序欄位 <code>clickcnt</code> 點擊數, <code>time</code> 日期, <code>relevance</code> 相關性</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>time</code></pre></div></li><li><strong>order</strong>: <em>required (string - default: desc)</em><p>排序方式 <code>asc</code> 遞增, <code>desc</code> 遞減</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>desc</code></pre></div></li></ul></div><div class="tab-pane" id="articles_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "total": 3,
   "hits":{
     "fund":[
       {
-        "pid":"IUKEGB",
-        "title":"施羅德環球基金系列 - 英國股票 C 類股份 - 累積單位(英鎊)",
-        "titleEng":"Schroder ISF UK Equity C Acc",
-        "StarRating":4,
-        "RiskRating":1,
-        "score":3.73
-      },
-      {
-        "pid":"0P00000AZI",
-        "title":"貝萊德英國基金 A2",
-        "titleEng":"BGF United Kingdom A2",
-        "StarRating":4,
-        "RiskRating":1,
-        "score":3.1
+        "pid": "018002",
+        "score": 0.10626807,
+        "title": "瑞銀 (盧森堡) 美國增長股票基金(美元)",
+        "titleEng": "UBS (LUX) ES USA GROWTH $ P ACC",
+        "starRating": null,
+        "riskRating": 4,
+        "createTime": "2017-05-25T00:53:58",
+        "views": 47
       }
     ],
     "theme":[
-      {
-        "pid":"33",
-        "title":"英國脫歐後，維持債券投資的三個理由",
-        "subtitle":"6月23日英國公投決定正式脫歐，事前數個月的不確定性，事後繼續延燒。隨著塵埃落定，聯博認為投資人不應該「出脫」債券基金，其中有三個理由。",
-        "imgUrl":"",
-        "score":2.12
-      },
-      {
-        "pid":"28",
-        "title":"英國退歐、行情風雲變色",
-        "subtitle":"六月份黃金基金閃亮",
-        "imgUrl":"Theme_28.jpg",
-        "score":2.12
-      }
+    {
+      "pid": "2453",
+      "score": 0.024497706,
+      "title": "從聯合利華看優質企業的投資優勢",
+      "summary": "聯合利華，一家跨國型的消費品龍頭企業，總部遠在荷蘭和倫敦，或許因此您對聯合利華的認識並不深，但是生活周遭家喻戶曉的品牌卻充滿它的影子。這家產業龍頭擅長於多品牌的經營模式，旗下具有400多個知名品牌，營運觸角遍及全球，尤其以新興市場為它的主要獲利來源。\r&lt;br/&gt;\r&lt;br/&gt;甫自1880年創業以來，聯合利華的營業宗旨就在於打造更美好的未來，該公司持續透過了解消費者終端需求，不斷致力於研發新產品。目前全球每天有高達20億人在使用聯合利華的產品，品牌價值造就消費者忠誠，由需求出發的經營模式，使這家企業長年位於產業龍頭地位不墜，並深植於日常生活模式中具有無可取代的市場地位。",
+      "imgUrl": "Theme_2453_20170418103347.gif",
+      "createTime": "2017-04-17T00:00:00",
+      "views": 45
+    }
   ],
   "report":[
     {
-      "pid":"1",
-      "title":"新興債為經理人加碼度最高的債市1",
-      "score":2.12,
-      "pdfUrl":"/fundrich/Report_1.pdf"
-    },
-    {
-      "pid":"14",
-      "title":"英國脫歐：何去何從？",
-      "score":2.12,
-      "pdfUrl":"/fundrich/Report_2.pdf"
+      "pid": "168",
+      "score": 0.6565784,
+      "title": "2017年美國REITs擁三亮點",
+      "pdfUrl": "Report_168.pdf",
+      "summary": "",
+      "createTime": "2016-12-22T00:00:00",
+      "views": 39
     }
   ]
 }
@@ -303,24 +289,28 @@
 }</code></pre></div></div><div class="tab-pane" id="articles_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "message": "[report][3]: document already exists",
   "localized_message": "[report][3]: document already exists"
-}</code></pre></div></div><div class="tab-pane" id="articles_post_securedby"><h1>Secured by basic</h1></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_articles_types__type_"><span class="parent">/articles</span>/types/{type}</a> <span class="methods"><a href="#articles_types__type__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_articles_types__type_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#articles_types__type__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles_types__type__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/articles</span>/types/{type}</h4></div><div class="modal-body"><div class="alert alert-info"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles_types__type__get_request" data-toggle="tab">Request</a></li><li><a href="#articles_types__type__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles_types__type__get_request"><h3>URI Parameters</h3><ul><li><strong>type</strong>: <em>required (string)</em><p>議題 theme, 基金 fund, 研報 report</p></li></ul><h3>Query Parameters</h3><ul><li><strong>keyword</strong>: <em>required (string)</em><p>搜尋字詞</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>英國</code></pre></div></li><li><strong>startindex</strong>: <em>required (integer - default: 0)</em><p>start index in ES table</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>1</code></pre></div></li><li><strong>offset</strong>: <em>required (integer - default: 10)</em><p>回傳的筆數</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>2</code></pre></div></li><li><strong>sort</strong>: <em>required (string - default: relevance)</em><p>排序欄位 <code>clickcnt</code> 點擊數, <code>time</code> 日期, <code>relevance</code> 相關性</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>time</code></pre></div></li><li><strong>order</strong>: <em>required (string - default: desc)</em><p>排序方式 <code>asc</code> 遞增, <code>desc</code> 遞減</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>desc</code></pre></div></li></ul></div><div class="tab-pane" id="articles_types__type__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+}</code></pre></div></div><div class="tab-pane" id="articles_post_securedby"><h1>Secured by basic</h1></div></div></div></div></div></div></div><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_articles_types__type_"><span class="parent">/articles</span>/types/{type}</a> <span class="methods"><a href="#articles_types__type__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_articles_types__type_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#articles_types__type__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="articles_types__type__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/articles</span>/types/{type}</h4></div><div class="modal-body"><div class="alert alert-info"><p>不指定 <code>Type</code> (基金、fund、議題 theme、研報 report)，進行全文搜尋功能，Get articles list from all type table</p></div><ul class="nav nav-tabs"><li class="active"><a href="#articles_types__type__get_request" data-toggle="tab">Request</a></li><li><a href="#articles_types__type__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="articles_types__type__get_request"><h3>URI Parameters</h3><ul><li><strong>type</strong>: <em>required (string)</em><p>議題 theme, 基金 fund, 研報 report</p></li></ul><h3>Query Parameters</h3><ul><li><strong>keyword</strong>: <em>required (string)</em><p>搜尋字詞</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>美國</code></pre></div></li><li><strong>startindex</strong>: <em>required (integer - default: 0)</em><p>start index in ES table</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>1</code></pre></div></li><li><strong>offset</strong>: <em>required (integer - default: 10)</em><p>回傳的筆數</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>2</code></pre></div></li><li><strong>sort</strong>: <em>required (string - default: relevance)</em><p>排序欄位 <code>clickcnt</code> 點擊數, <code>time</code> 日期, <code>relevance</code> 相關性</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>time</code></pre></div></li><li><strong>order</strong>: <em>required (string - default: desc)</em><p>排序方式 <code>asc</code> 遞增, <code>desc</code> 遞減</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>desc</code></pre></div></li></ul></div><div class="tab-pane" id="articles_types__type__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
   "total": 2,
   "hits":[
     {
-      "pid":"IUKEGB",
-      "title":"施羅德環球基金系列 - 英國股票 C 類股份 - 累積單位(英鎊)",
-      "titleEng":"Schroder ISF UK Equity C Acc",
-      "StarRating":4,
-      "RiskRating":1,
-      "score": 3.73
+      "pid": "018002",
+      "score": 0.10626807,
+      "title": "瑞銀 (盧森堡) 美國增長股票基金(美元)",
+      "titleEng": "UBS (LUX) ES USA GROWTH $ P ACC",
+      "starRating": null,
+      "riskRating": 4,
+      "createTime": "2017-05-25T00:53:58",
+      "views": 47
     },
     {
-      "pid":"0P00000AZI",
-      "title":"貝萊德英國基金 A2",
-      "titleEng":"BGF United Kingdom A2",
-      "StarRating":4,
-      "RiskRating":1,
-      "score": 3.1
+      "pid": "018035",
+      "score": 0.088416204,
+      "title": "瑞銀 (盧森堡) 美國小型股票基金(美元)",
+      "titleEng": "UBS (LUX) EF SMALL CAPS USA (USD) P",
+      "starRating": null,
+      "riskRating": 4,
+      "createTime": "2017-05-25T00:53:59",
+      "views": 185
     }
   ]
 }
